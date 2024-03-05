@@ -24,6 +24,7 @@ public class UserInterface {
                     break;
                 case 2:
                     System.out.println(adventure.getCurrentRoom().getName());
+                    System.out.println(adventure.getCurrentRoom().getDescription());
                     break;
                 case 3:
                     System.out.println("Help");
