@@ -45,7 +45,7 @@ public class UserInterface {
                 if (currentRoom.getNorth() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
-                    adventure.setCurrentRoom(currentRoom.getNorth());
+                    adventure.setCurrentRoom(adventure.getCurrentRoom().getNorth());
                     System.out.println(currentRoom.getName());
                 }
                 break;
@@ -53,7 +53,7 @@ public class UserInterface {
                 if (currentRoom.getSouth() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
-                    adventure.setCurrentRoom(currentRoom.getSouth());
+                    adventure.setCurrentRoom(adventure.getCurrentRoom().getSouth());
                     System.out.println(currentRoom.getName());
                 }
                 break;
@@ -61,7 +61,7 @@ public class UserInterface {
                 if (currentRoom.getEast() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
-                    adventure.setCurrentRoom(currentRoom.getEast());
+                    adventure.setCurrentRoom(adventure.getCurrentRoom().getEast());
                     System.out.println(currentRoom.getName());
                 }
                 break;
@@ -69,7 +69,7 @@ public class UserInterface {
                 if (currentRoom.getWest() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
-                    adventure.setCurrentRoom(currentRoom.getWest());
+                    adventure.setCurrentRoom(adventure.getCurrentRoom().getWest());
                     System.out.println(currentRoom.getName());
                 }
                 break;
