@@ -43,6 +43,8 @@ public class UserInterface {
         Room currentRoom = adventure.getCurrentRoom();
         switch (userDirection) {
             case "go north":
+            case "n":
+            case "north":
                 if (currentRoom.getNorth() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
@@ -51,6 +53,8 @@ public class UserInterface {
                 }
                 break;
             case "go south":
+            case "s":
+            case "south":
                 if (currentRoom.getSouth() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
@@ -59,6 +63,8 @@ public class UserInterface {
                 }
                 break;
             case "go east":
+            case "e":
+            case "east":
                 if (currentRoom.getEast() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
@@ -67,6 +73,8 @@ public class UserInterface {
                 }
                 break;
             case "go west":
+            case "w":
+            case "west":
                 if (currentRoom.getWest() == null) {
                     System.out.println("you can't go in that direction");
                 } else {
