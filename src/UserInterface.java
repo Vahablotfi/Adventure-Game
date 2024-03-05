@@ -51,7 +51,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getNorth());
-                    System.out.println("You're nowin " + adventure.getCurrentRoom().getName());
+                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
                 }
                 break;
             case "go south":
