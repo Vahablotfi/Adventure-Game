@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     Adventure adventure = new Adventure(); //instance/objekt
-    Room currentRoom = adventure.getCurrentRoom();
+
 
     public void startGame() {
         System.out.println("Welcome to the game!");
@@ -23,7 +23,7 @@ public class UserInterface {
                     chooseDirection();
                     break;
                 case 2:
-                    System.out.println(currentRoom.getName());
+                    System.out.println(adventure.getCurrentRoom().getName());
                     break;
                 case 3:
                     System.out.println("Help");
@@ -40,6 +40,7 @@ public class UserInterface {
     public void chooseDirection() {
         scanner.nextLine();
         String userDirection = scanner.nextLine();
+        Room currentRoom = adventure.getCurrentRoom();
         switch (userDirection) {
             case "go north":
                 if (currentRoom.getNorth() == null) {
