@@ -23,7 +23,7 @@ public class UserInterface {
                     chooseDirection();
                     break;
                 case 2:
-                    System.out.println(adventure.getCurrentRoom().getName());
+                    System.out.println("You're in " + adventure.getCurrentRoom().getName());
                     System.out.println(adventure.getCurrentRoom().getDescription());
                     break;
                 case 3:
@@ -51,7 +51,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getNorth());
-                    System.out.println(adventure.getCurrentRoom().getName());
+                    System.out.println("You're nowin " + adventure.getCurrentRoom().getName());
                 }
                 break;
             case "go south":
@@ -61,7 +61,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getSouth());
-                    System.out.println(adventure.getCurrentRoom().getName());
+                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
                 }
                 break;
             case "go east":
@@ -71,7 +71,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getEast());
-                    System.out.println(adventure.getCurrentRoom().getName());
+                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
                 }
                 break;
             case "go west":
@@ -81,7 +81,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getWest());
-                    System.out.println(adventure.getCurrentRoom().getName());
+                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
                 }
                 break;
 
