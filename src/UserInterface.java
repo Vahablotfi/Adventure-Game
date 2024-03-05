@@ -19,7 +19,7 @@ public class UserInterface {
 
             switch (userChoice) {
                 case 1:
-                    System.out.println("Chose direction");
+                    System.out.println("Choose direction");
                     chooseDirection();
                     break;
                 case 2:

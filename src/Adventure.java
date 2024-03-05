@@ -11,7 +11,7 @@ public class Adventure {
         Room room7 = new Room("Room 7", "room with no distinct features, except two doors");
         Room room8 = new Room("Room 8", "room with no distinct features, except three doors");
         Room room9 = new Room("Room 9", "room with no distinct features, except two doors");
-        //connct rooms
+        //connect rooms
         room1.setNorth(null);
         room1.setSouth(room4);
         room1.setEast(room2);
