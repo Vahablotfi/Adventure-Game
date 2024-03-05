@@ -11,7 +11,7 @@ public class UserInterface {
         int userChoice = 0;
 
         while (userChoice != 4) {
-            System.out.println("1. Chose direction");
+            System.out.println("1. Choose direction");
             System.out.println("2. Look");
             System.out.println("3. Help");
             System.out.println("4. Exit game");
