@@ -50,7 +50,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getNorth());
-                    System.out.println(currentRoom.getName());
+                    System.out.println(adventure.getCurrentRoom().getName());
                 }
                 break;
             case "go south":
@@ -60,7 +60,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getSouth());
-                    System.out.println(currentRoom.getName());
+                    System.out.println(adventure.getCurrentRoom().getName());
                 }
                 break;
             case "go east":
@@ -70,7 +70,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getEast());
-                    System.out.println(currentRoom.getName());
+                    System.out.println(adventure.getCurrentRoom().getName());
                 }
                 break;
             case "go west":
@@ -80,7 +80,7 @@ public class UserInterface {
                     System.out.println("you can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getWest());
-                    System.out.println(currentRoom.getName());
+                    System.out.println(adventure.getCurrentRoom().getName());
                 }
                 break;
 
