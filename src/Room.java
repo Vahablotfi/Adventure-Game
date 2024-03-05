@@ -58,4 +58,5 @@ public class Room {
     public void setSouth(Room south) {
         this.south = south;
     }
+
 }

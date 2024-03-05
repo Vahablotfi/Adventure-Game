@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
+    Adventure adventure = new Adventure(); //instance/objekt
 
     public void startGame() {
         System.out.println("Welcome to the game!");
@@ -18,6 +19,7 @@ public class UserInterface {
             switch (userChoice) {
                 case 1:
                     System.out.println("Chose direction ");
+                    System.out.println(adventure.getCurrentRoom().getName());
                     break;
                 case 2:
                     System.out.println("Look");
@@ -33,4 +35,6 @@ public class UserInterface {
             }
         }
     }
+
+    
 }
