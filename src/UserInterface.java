@@ -40,6 +40,7 @@ public class UserInterface {
     public void chooseDirection() {
         scanner.nextLine();
         String userDirection = scanner.nextLine();
+        userDirection = userDirection.toLowerCase();
         Room currentRoom = adventure.getCurrentRoom();
         switch (userDirection) {
             case "go north":
