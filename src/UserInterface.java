@@ -27,7 +27,7 @@ public class UserInterface {
                     System.out.println(adventure.getCurrentRoom().getDescription());
                     break;
                 case 3:
-                    System.out.println("Help");
+                    help();
                     break;
                 case 4:
                     System.out.println("Exit game");
@@ -87,6 +87,13 @@ public class UserInterface {
 
         }
 
+    }
+
+    public void help() {
+        System.out.println("Type 1 to chose which direction you wish to go in: North, South, East or West.");
+        System.out.println("Type 2 to look around the room you're currently in.");
+        System.out.println("Type 3 for help (like you just did)");
+        System.out.println("Type 4 to exit the game.");
     }
 
 
