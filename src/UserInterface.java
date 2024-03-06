@@ -86,7 +86,6 @@ public class UserInterface {
                 break;
 
         }
-
     }
 
     public void help() {
@@ -95,6 +94,4 @@ public class UserInterface {
         System.out.println("Type 3 for help (like you just did)");
         System.out.println("Type 4 to exit the game.");
     }
-
-
 }
