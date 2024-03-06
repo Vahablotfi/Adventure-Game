@@ -2,15 +2,15 @@ public class Adventure {
     private Room currentRoom;
 
     public Adventure(){
-        Room room1 = new Room("Room 1", "room with no distinct features, except two doors");
-        Room room2 = new Room("Room 2", "Room with two doors");
-        Room room3 = new Room("Room 3", "room with no distinct features, except two doors");
-        Room room4 = new Room("Room 4", "room with no distinct features, except two doors");
-        Room room5 = new Room("Room 5", "room with no distinct features, except one door");
-        Room room6 = new Room("Room 6", "room with no distinct features, except two doors");
-        Room room7 = new Room("Room 7", "room with no distinct features, except two doors");
-        Room room8 = new Room("Room 8", "room with no distinct features, except three doors");
-        Room room9 = new Room("Room 9", "room with no distinct features, except two doors");
+        Room room1 = new Room("Room 1", "Brightly lit room with red and black stains covering the walls. Two doors");
+        Room room2 = new Room("Room 2", "A dark corridor with a very distinct floor pattern. Two doors.");
+        Room room3 = new Room("Room 3", "A dark room with puddles on the floor. A pipe is leaking. Two doors");
+        Room room4 = new Room("Room 4", "A very small room. There's a noise from the eastern wall. Two doors");
+        Room room5 = new Room("Room 5", "'Treasure room'. One door");
+        Room room6 = new Room("Room 6", "There's not much to see in here. Two doors");
+        Room room7 = new Room("Room 7", "A room with a bed in the center. Two doors");
+        Room room8 = new Room("Room 8", "A dark room that echoes. Three doors");
+        Room room9 = new Room("Room 9", "It's quite cold in here. The floor is slippery. Two doors");
         //connect rooms
         room1.setNorth(null);
         room1.setSouth(room4);
