@@ -15,7 +15,7 @@ public class Player {
     }
 
     public String look(){
-        String roomInfo = currentRoom.getName()+currentRoom.getDescription();
+        String roomInfo = "Your are in: " + currentRoom.getName() + "\n" + currentRoom.getDescription() + "\n";
         return roomInfo;
     }
 
