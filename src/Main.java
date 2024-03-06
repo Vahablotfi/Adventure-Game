@@ -2,7 +2,8 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.4
 public class Main {
     public static void main(String[] args) {
-        UserInterface UI = new UserInterface();
-        UI.startGame();
+        UserInterface ui = new UserInterface();
+        ui.startGame();
+
     }
 }

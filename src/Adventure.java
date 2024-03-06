@@ -1,14 +1,25 @@
 public class Adventure {
+    private Map gameMap;
+    private Player gamePlayer;
 
-    Map map = new Map();
-
-    private Room currentRoom;
-
-    public Room getCurrentRoom() {
-        return currentRoom;
+    public Adventure(){
+        gameMap = new Map();
+        gamePlayer = new Player(gameMap.getRoom1());
     }
 
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
+    public Map getGameMap() {
+        return gameMap;
+    }
+
+    public Player getGamePlayer() {
+        return gamePlayer;
+    }
+
+    public void setGameMap(Map gameMap) {
+        this.gameMap = gameMap;
+    }
+
+    public void setGamePlayer(Player gamePlayer) {
+        this.gamePlayer = gamePlayer;
     }
 }

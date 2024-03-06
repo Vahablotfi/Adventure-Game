@@ -2,29 +2,32 @@ import java.util.Scanner;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
-    Adventure adventure = new Adventure(); //instance/objekt
+    Adventure newAdventure = new Adventure();
 
 
-    public void startGame() {
+    public void startGame(){
+        playGame(newAdventure.getGamePlayer());
+    }
+
+    public void playGame(Player player) {
         System.out.println("Welcome to the game!");
         System.out.println("You wake up on a dirty floor. You're in room 1!");
         int userChoice = 0;
 
         while (userChoice != 4) {
-            System.out.println("1. Choose direction");
-            System.out.println("2. Look");
-            System.out.println("3. Help");
-            System.out.println("4. Exit game");
+            menu();
             userChoice = scanner.nextInt();
 
             switch (userChoice) {
                 case 1:
-                    System.out.println("Choose direction");
-                    chooseDirection();
+                    if (player.moveAround(chooseDirection())){
+                        System.out.println(player.getCurrentRoom().getName());
+                    } else {
+                        System.out.println("You can not go to that direction !!" );
+                    }
                     break;
                 case 2:
-                    System.out.println("You're in " + adventure.getCurrentRoom().getName());
-                    System.out.println(adventure.getCurrentRoom().getDescription());
+                    System.out.println(player.look());
                     break;
                 case 3:
                     help();
@@ -38,54 +41,13 @@ public class UserInterface {
         }
     }
 
-    public void chooseDirection() {
+    public String chooseDirection() {
+        System.out.println("Choose direction");
         scanner.nextLine();
         String userDirection = scanner.nextLine();
         userDirection = userDirection.toLowerCase();
-        Room currentRoom = adventure.getCurrentRoom();
-        switch (userDirection) {
-            case "go north":
-            case "n":
-            case "north":
-                if (currentRoom.getNorth() == null) {
-                    System.out.println("you can't go in that direction");
-                } else {
-                    adventure.setCurrentRoom(adventure.getCurrentRoom().getNorth());
-                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
-                }
-                break;
-            case "go south":
-            case "s":
-            case "south":
-                if (currentRoom.getSouth() == null) {
-                    System.out.println("you can't go in that direction");
-                } else {
-                    adventure.setCurrentRoom(adventure.getCurrentRoom().getSouth());
-                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
-                }
-                break;
-            case "go east":
-            case "e":
-            case "east":
-                if (currentRoom.getEast() == null) {
-                    System.out.println("You can't go in that direction");
-                } else {
-                    adventure.setCurrentRoom(adventure.getCurrentRoom().getEast());
-                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
-                }
-                break;
-            case "go west":
-            case "w":
-            case "west":
-                if (currentRoom.getWest() == null) {
-                    System.out.println("You can't go in that direction");
-                } else {
-                    adventure.setCurrentRoom(adventure.getCurrentRoom().getWest());
-                    System.out.println("You're now in " + adventure.getCurrentRoom().getName());
-                }
-                break;
+        return userDirection;
 
-        }
     }
 
     public void help() {
@@ -94,4 +56,13 @@ public class UserInterface {
         System.out.println("Type 3 for help (like you just did)");
         System.out.println("Type 4 to exit the game.");
     }
+
+    public void menu(){
+        System.out.println("1. Chose direction");
+        System.out.println("2. Look");
+        System.out.println("3. Help");
+        System.out.println("4. Exit game");
+    }
+
+
 }
