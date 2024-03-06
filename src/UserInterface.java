@@ -68,7 +68,7 @@ public class UserInterface {
             case "e":
             case "east":
                 if (currentRoom.getEast() == null) {
-                    System.out.println("you can't go in that direction");
+                    System.out.println("You can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getEast());
                     System.out.println("You're now in " + adventure.getCurrentRoom().getName());
@@ -78,7 +78,7 @@ public class UserInterface {
             case "w":
             case "west":
                 if (currentRoom.getWest() == null) {
-                    System.out.println("you can't go in that direction");
+                    System.out.println("You can't go in that direction");
                 } else {
                     adventure.setCurrentRoom(adventure.getCurrentRoom().getWest());
                     System.out.println("You're now in " + adventure.getCurrentRoom().getName());
