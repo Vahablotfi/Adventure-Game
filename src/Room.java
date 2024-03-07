@@ -10,27 +10,28 @@ public class Room {
     private Room south;
     private ArrayList<Item> itemsInRoomArr = new ArrayList<>();
 
-
-    public Room(String name, String description){
-        this.name=name;
-        this.description=description;
-        this.visited=false;
+    public Room(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.visited = false;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         itemsInRoomArr.add(item);
     }
 
-    public void removeItem(Item item){
+    public void removeItem(Item item) {
         itemsInRoomArr.remove(item);
     }
 
-    public ArrayList<Item> getItemsInRoomArr(){
+    public ArrayList<Item> getItemsInRoomArr() {
         return itemsInRoomArr;
     }
-    public void setItemsInRoomArr(ArrayList itemsInRoomArr){
+
+    public void setItemsInRoomArr(ArrayList itemsInRoomArr) {
         this.itemsInRoomArr = itemsInRoomArr;
     }
+
 
     public String getName() {
         return name;
@@ -57,8 +58,8 @@ public class Room {
         this.visited = visited;
     }
 
-    public void String (boolean visited) {
-        this.visited=false;
+    public void String(boolean visited) {
+        this.visited = false;
     }
 
     public void setDescription(String description) {
@@ -96,8 +97,6 @@ public class Room {
     public void setSouth(Room south) {
         this.south = south;
     }
-
-    ArrayList<String> itemsInRoom = new ArrayList<String>();
 
 
 }

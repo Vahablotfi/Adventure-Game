@@ -5,7 +5,7 @@ public class UserInterface {
     Adventure newAdventure = new Adventure();
 
 
-    public void startGame(){
+    public void startGame() {
         playGame(newAdventure.getGamePlayer());
     }
 
@@ -20,13 +20,13 @@ public class UserInterface {
 
             switch (userChoice) {
                 case 1:
-                    if (player.moveAround(chooseDirection())){
+                    if (player.moveAround(chooseDirection())) {
                         System.out.println(player.getCurrentRoom().getName());
                         System.out.println(player.getCurrentRoom().getVisited());
                         System.out.println(player.getCurrentRoom().getItemsInRoomArr());
                         System.out.println();
                     } else {
-                        System.out.println("You can not go to that direction !!" );
+                        System.out.println("You can not go to that direction !!");
                     }
                     break;
                 case 2:
@@ -36,6 +36,15 @@ public class UserInterface {
                     help();
                     break;
                 case 4:
+                    showInventory(player);
+                    break;
+                case 6:
+                    //takeItem(player);
+                    break;
+                case 7:
+                    //dropItem(player);
+                    break;
+                case 8:
                     System.out.println("Exit game");
                     break;
                 default:
@@ -56,13 +65,24 @@ public class UserInterface {
         System.out.println("Type 1 to chose which direction you wish to go in: North, South, East or West.");
         System.out.println("Type 2 to look around the room you're currently in.");
         System.out.println("Type 3 for help (like you just did)");
-        System.out.println("Type 4 to exit the game.");
+        System.out.println("Type 4 for inventory");
+        System.out.println("Type 8 to exit the game.");
     }
 
-    public void menu(){
+    public void menu() {
         System.out.println("1. Chose direction");
         System.out.println("2. Look");
         System.out.println("3. Help");
-        System.out.println("4. Exit game");
+        System.out.println("4. Inventory");
+        System.out.println("5. Exit game");
+    }
+
+    public void showInventory(Player player) {
+        System.out.println("Inventory: ");
+        for (Item item : player.getCurrentRoom().getItemsInRoomArr()) {
+            System.out.println(" " + item.getShortName());
+
+        }
+
     }
 }

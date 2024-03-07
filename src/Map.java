@@ -23,12 +23,15 @@ public class Map {
          room8 = new Room("Room 8", "This room is very big. Three doors");
          room9 = new Room("Room 9", "It's quite cold in here. The floor is slippery. Two doors");
 
-        // connect rooms
+        // Connect Rooms:
         room1.setNorth(null);
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.setWest(null);
-        room1.addItem(new Item("lamp","bronze lamp"));
+
+        //ikke færdig
+        Item items = new Item("Book" , "vyuftu");
+        room1.addItem(items);
 
         room2.setNorth(null);
         room2.setEast(room3);

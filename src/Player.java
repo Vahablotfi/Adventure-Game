@@ -3,15 +3,14 @@ import java.util.ArrayList;
 public class Player {
 
     private Room currentRoom;
-
     private ArrayList<Item> inventoryArr;
 
-    public Player(Room currentRoom){
+    public Player(Room currentRoom) {
         this.currentRoom = currentRoom;
         this.inventoryArr = new ArrayList<Item>();
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         inventoryArr.add(item);
     }
 
@@ -19,12 +18,22 @@ public class Player {
         inventoryArr.remove(item);
     }
 
-    public ArrayList<Item> getInventoryArr(){
+    public ArrayList<Item> getInventoryArr() {
         return inventoryArr;
     }
 
     public void setInventoryArr(Item item) {
         this.inventoryArr = inventoryArr;
+    }
+
+    public void takeItem(Item item) {
+        inventoryArr.add(item);
+        getCurrentRoom().removeItem(item);
+    }
+
+    public void dropItem(Item item) {
+        inventoryArr.add(item);
+        getCurrentRoom().removeItem(item);
     }
 
     public Room getCurrentRoom() {
@@ -40,7 +49,7 @@ public class Player {
         return roomInfo;
     }
 
-    public boolean moveAround(String direction ) {
+    public boolean moveAround(String direction) {
 
         switch (direction) {
             case "go north":
