@@ -23,6 +23,7 @@ public class UserInterface {
                     if (player.moveAround(chooseDirection())){
                         System.out.println(player.getCurrentRoom().getName());
                         System.out.println(player.getCurrentRoom().getVisited());
+                        System.out.println(player.getCurrentRoom().getItemsInRoomArr());
                         System.out.println();
                     } else {
                         System.out.println("You can not go to that direction !!" );

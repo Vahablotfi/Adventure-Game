@@ -2,7 +2,7 @@ public class Adventure {
     private Map gameMap;
     private Player gamePlayer;
 
-    public Adventure(){
+    public Adventure() {
         gameMap = new Map();
         gamePlayer = new Player(gameMap.getRoom1());
     }
@@ -22,5 +22,4 @@ public class Adventure {
     public void setGamePlayer(Player gamePlayer) {
         this.gamePlayer = gamePlayer;
     }
-
 }
