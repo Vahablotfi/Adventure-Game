@@ -13,24 +13,15 @@ public class Map {
 
 
     public Map(){
-         room1 = new Room("Room 1", "The room is brightly lit with red and black stains covering the walls. Two doors",
-                 ArrayList);
-         room2 = new Room("Room 2", "You're in a dark corridor with a very distinct floor pattern. Two doors.",
-                 "keys");
-         room3 = new Room("Room 3", "The room is dark with puddles on the floor. A pipe is leaking. Two doors",
-                 "knife");
-         room4 = new Room("Room 4", "This is a very small room. There's a noise from the eastern wall. Two doors",
-                 "potion");
-         room5 = new Room("Room 5", "'Treasure room'. One door",
-         null);
-         room6 = new Room("Room 6", "There's not much to see in here. Two doors"
-         , "trash");
-         room7 = new Room("Room 7", "This room has a bed placed in the center. Two doors"
-         , null);
-         room8 = new Room("Room 8", "This room is very big. Three doors"
-         , null);
-         room9 = new Room("Room 9", "It's quite cold in here. The floor is slippery. Two doors"
-         ,null);
+         room1 = new Room("Room 1", "The room is brightly lit with red and black stains covering the walls. Two doors");
+         room2 = new Room("Room 2", "You're in a dark corridor with a very distinct floor pattern. Two doors");
+         room3 = new Room("Room 3", "The room is dark with puddles on the floor. A pipe is leaking. Two doors");
+         room4 = new Room("Room 4", "This is a very small room. There's a noise from the eastern wall. Two doors");
+         room5 = new Room("Room 5", "'Treasure room'. One door");
+         room6 = new Room("Room 6", "There's not much to see in here. Two doors");
+         room7 = new Room("Room 7", "This room has a bed placed in the center. Two doors");
+         room8 = new Room("Room 8", "This room is very big. Three doors");
+         room9 = new Room("Room 9", "It's quite cold in here. The floor is slippery. Two doors");
 
         // connect rooms
         room1.setNorth(null);

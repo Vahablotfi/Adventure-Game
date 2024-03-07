@@ -8,14 +8,13 @@ public class Room {
     private Room east;
     private Room west;
     private Room south;
-    private ArrayList<Item> itemsInRoomArr;
+    private ArrayList<Item> itemsInRoomArr = new ArrayList<>();
 
-    public Room(String name, String description, ArrayList itemsInRoomArr){
+
+    public Room(String name, String description){
         this.name=name;
         this.description=description;
         this.visited=false;
-        this.itemsInRoomArr= itemsInRoomArr;
-
     }
 
     public ArrayList<Item> getItemsInRoomArr(){
