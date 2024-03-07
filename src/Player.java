@@ -1,9 +1,30 @@
+import java.util.ArrayList;
+
 public class Player {
 
     private Room currentRoom;
 
+    private ArrayList<Item> inventoryArr;
+
     public Player(Room currentRoom){
         this.currentRoom = currentRoom;
+        this.inventoryArr = new ArrayList<Item>();
+    }
+
+    public void addItem(Item item){
+        inventoryArr.add(item);
+    }
+
+    public void removeItem(Item item) {
+        inventoryArr.remove(item);
+    }
+
+    public ArrayList<Item> getInventoryArr(){
+        return inventoryArr;
+    }
+
+    public void setInventoryArr(Item item) {
+        this.inventoryArr = inventoryArr;
     }
 
     public Room getCurrentRoom() {

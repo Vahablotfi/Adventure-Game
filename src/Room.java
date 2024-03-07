@@ -17,6 +17,14 @@ public class Room {
         this.visited=false;
     }
 
+    public void addItem(Item item){
+        itemsInRoomArr.add(item);
+    }
+
+    public void removeItem(Item item){
+        itemsInRoomArr.remove(item);
+    }
+
     public ArrayList<Item> getItemsInRoomArr(){
         return itemsInRoomArr;
     }
