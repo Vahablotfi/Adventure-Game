@@ -1,6 +1,7 @@
 public class Room {
     private String name;
     private String description;
+    private boolean visited;
     private Room north;
     private Room east;
     private Room west;
@@ -9,6 +10,7 @@ public class Room {
     public Room(String name, String description){
         this.name=name;
         this.description=description;
+        this.visited=false;
     }
 
     public String getName() {
@@ -21,6 +23,23 @@ public class Room {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getVisited() {
+        if (!visited) {
+            visited = true;
+            return description;
+        } else {
+            return "I've already been in this room";
+        }
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public void String (boolean visited) {
+        this.visited=false;
     }
 
     public void setDescription(String description) {

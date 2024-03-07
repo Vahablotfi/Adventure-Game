@@ -14,7 +14,7 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
-    public String look(){
+    public String look() {
         String roomInfo = "Your are in: " + currentRoom.getName() + "\n" + currentRoom.getDescription() + "\n";
         return roomInfo;
     }

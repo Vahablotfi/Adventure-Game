@@ -22,4 +22,5 @@ public class Adventure {
     public void setGamePlayer(Player gamePlayer) {
         this.gamePlayer = gamePlayer;
     }
+
 }

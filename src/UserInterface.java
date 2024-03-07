@@ -22,6 +22,7 @@ public class UserInterface {
                 case 1:
                     if (player.moveAround(chooseDirection())){
                         System.out.println(player.getCurrentRoom().getName());
+                        System.out.println(player.getCurrentRoom().getVisited());
                     } else {
                         System.out.println("You can not go to that direction !!" );
                     }
@@ -47,7 +48,6 @@ public class UserInterface {
         String userDirection = scanner.nextLine();
         userDirection = userDirection.toLowerCase();
         return userDirection;
-
     }
 
     public void help() {
@@ -63,6 +63,4 @@ public class UserInterface {
         System.out.println("3. Help");
         System.out.println("4. Exit game");
     }
-
-
 }
