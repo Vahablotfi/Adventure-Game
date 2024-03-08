@@ -17,6 +17,7 @@ public class UserInterface {
         while (userChoice != 4) {
             menu();
             userChoice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (userChoice) {
                 case 1:
