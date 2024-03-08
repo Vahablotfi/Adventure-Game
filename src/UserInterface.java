@@ -38,13 +38,13 @@ public class UserInterface {
                 case 4:
                     showInventory(player);
                     break;
-                case 6:
+                case 5:
                     //takeItem(player);
                     break;
-                case 7:
+                case 6:
                     //dropItem(player);
                     break;
-                case 8:
+                case 7:
                     System.out.println("Exit game");
                     break;
                 default:
