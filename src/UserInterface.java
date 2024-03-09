@@ -14,7 +14,7 @@ public class UserInterface {
         System.out.println("You wake up on a dirty floor. You're in room 1!");
         int userChoice = 0;
 
-        while (userChoice != 4) {
+        while (userChoice != 7) {
             menu();
             userChoice = scanner.nextInt();
             scanner.nextLine();
