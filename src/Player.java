@@ -7,7 +7,7 @@ public class Player {
 
     public Player(Room currentRoom) {
         this.currentRoom = currentRoom;
-        this.inventoryArr = new ArrayList<Item>();
+        this.inventoryArr = new ArrayList<>();
     }
 
     public void addItem(Item item) {
@@ -22,18 +22,39 @@ public class Player {
         return inventoryArr;
     }
 
-    public void setInventoryArr(Item item) {
+    public void setInventoryArr(ArrayList<Item> inventoryArr) {
         this.inventoryArr = inventoryArr;
     }
 
-    public void takeItem(Item item) {
-        inventoryArr.add(item);
-        getCurrentRoom().removeItem(item);
+    public void takeItem(String itemName) {
+        Item item = currentRoom.findItem(itemName);
+        if (item != null) {
+            currentRoom.removeItem(item);
+            addItem(item);
+            System.out.println("You took the " + item.getShortName() + ".");
+        } else {
+            System.out.println("There is nothing like " + itemName + " to take around here.");
+        }
     }
 
-    public void dropItem(Item item) {
-        inventoryArr.add(item);
-        getCurrentRoom().removeItem(item);
+    public void dropItem(String itemName) {
+        Item item = findItemInInventory(itemName);
+        if (item != null) {
+            removeItem(item);
+            currentRoom.addItem(item);
+            System.out.println("You dropped the " + item.getShortName() + ".");
+        } else {
+            System.out.println("You don't have anything like " + itemName + " in your inventory.");
+        }
+    }
+
+    public Item findItemInInventory(String itemName) {
+        for (Item item : inventoryArr) {
+            if (item.getShortName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public Room getCurrentRoom() {
@@ -45,7 +66,7 @@ public class Player {
     }
 
     public String look() {
-        String roomInfo = "Your are in: " + currentRoom.getName() + "\n" + currentRoom.getDescription() + "\n";
+        String roomInfo = "You are in: " + currentRoom.getName() + "\n" + currentRoom.getDescription() + "\n";
         return roomInfo;
     }
 

@@ -40,10 +40,14 @@ public class UserInterface {
                     showInventory(player);
                     break;
                 case 5:
-                    //takeItem(player);
+                    System.out.print("Enter the item name to take: ");
+                    String itemToTake = scanner.nextLine();
+                    player.takeItem(itemToTake);
                     break;
                 case 6:
-                    //dropItem(player);
+                    System.out.print("Enter the item name to drop: ");
+                    String itemToDrop = scanner.nextLine();
+                    player.dropItem(itemToDrop);
                     break;
                 case 7:
                     System.out.println("Exit game");
