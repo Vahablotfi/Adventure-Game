@@ -14,6 +14,7 @@ public class UserInterface {
     public void playGame(Player player) {
         System.out.println("Welcome to the game!");
         System.out.println("You wake up on a dirty floor. You're in room 1!");
+        System.out.println(player.look());
         int userChoice = 0;
 
         while (userChoice != 7) {
@@ -28,7 +29,6 @@ public class UserInterface {
                         System.out.println(player.getCurrentRoom().getVisited());
                         System.out.println(player.getCurrentRoom().getDescription());
                         System.out.println(player.getCurrentRoom().getDescription());
-                        showInventory(player);
                         System.out.println();
                     } else {
                         System.out.println("You can not go in that direction!!");

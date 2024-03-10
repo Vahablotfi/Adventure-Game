@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.StringJoiner;
 
 public class Player {
 
@@ -66,9 +68,25 @@ public class Player {
     }
 
     public String look() {
-        String roomInfo = "You are in: " + currentRoom.getName() + "\n" + currentRoom.getDescription() + "\n";
-        return roomInfo;
+        StringBuilder roomInfo = new StringBuilder();
+        roomInfo.append("You are in: ").append(currentRoom.getName());
+        roomInfo.append("\n").append(currentRoom.getDescription());
+        roomInfo.append("\nInventory: ");
+
+        List<Item> roomItems = currentRoom.getItemsInRoomArr();
+        if (roomItems.isEmpty()) {
+            roomInfo.append("The room is empty.");
+        } else {
+            StringJoiner joiner = new StringJoiner(", ");
+            for (Item item : roomItems) {
+                joiner.add(item.getShortName());
+            }
+            roomInfo.append(joiner.toString());
+        }
+
+        return roomInfo.toString();
     }
+
 
     public boolean moveAround(String direction) {
 
