@@ -20,10 +20,10 @@ public class UserInterface {
         while (userChoice != 7) {
             menu();
             userChoice = scanner.nextInt();
-            scanner.nextLine();
+            //scanner.nextLine();
 
             switch (userChoice) {
-                case 1:
+                case 1 -> {
                     if (player.moveAround(chooseDirection())) {
                         System.out.println(player.getCurrentRoom().getName());
                         System.out.println(player.getCurrentRoom().getVisited());
@@ -31,28 +31,29 @@ public class UserInterface {
                     } else {
                         System.out.println("You can not go in that direction!!");
                     }
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println(player.look());
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     help();
-                    break;
-                case 4:
-                System.out.print("Enter the item name to take: ");
-                String itemToTake = scanner.nextLine();
-                player.takeItem(itemToTake);
-                break;
-                case 5:
+                }
+                case 4 -> {
+                    System.out.print("Enter the item name to take: ");
+                    String itemToTake = scanner.nextLine();
+                    player.takeItem(itemToTake);
+                }
+                case 5 -> {
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = scanner.nextLine();
                     player.dropItem(itemToDrop);
-                    break;
-                case 6:
+                }
+                case 6 -> {
                     System.out.println("Exit game");
-                    break;
-                default:
+                }
+                default -> {
                     System.out.println("Invalid choice");
+                }
             }
 
         }

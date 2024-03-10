@@ -92,44 +92,41 @@ public class Player {
     public boolean moveAround(String direction) {
 
         switch (direction) {
-            case "go north":
-            case "n":
-            case "north":
+            case "go north", "n", "north" -> {
                 if (currentRoom.getNorth() != null) {
                     setCurrentRoom(currentRoom.getNorth());
                     return true;
                 } else {
                     return false;
                 }
-            case "go south":
-            case "s":
-            case "south":
+            }
+            case "go south", "s", "south" -> {
                 if (currentRoom.getSouth() != null) {
                     setCurrentRoom(currentRoom.getSouth());
                     return true;
                 } else {
                     return false;
                 }
-            case "go east":
-            case "e":
-            case "east":
+            }
+            case "go east", "e", "east" -> {
                 if (currentRoom.getEast() != null) {
                     setCurrentRoom(currentRoom.getEast());
                     return true;
                 } else {
                     return false;
                 }
-            case "go west":
-            case "w":
-            case "west":
+            }
+            case "go west", "w", "west" -> {
                 if (currentRoom.getWest() != null) {
                     setCurrentRoom(currentRoom.getWest());
                     return true;
                 } else {
                     return false;
                 }
-            default:
+            }
+            default -> {
                 return false;
+            }
         }
 
     }
