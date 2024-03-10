@@ -13,7 +13,6 @@ public class UserInterface {
 
     public void playGame(Player player) {
         System.out.println("Welcome to the game!");
-        System.out.println("You wake up on a dirty floor. You're in room 1!");
         System.out.println(player.look());
         int userChoice = 0;
 
