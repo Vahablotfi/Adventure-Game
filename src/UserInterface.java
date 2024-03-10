@@ -20,7 +20,7 @@ public class UserInterface {
         while (userChoice != 7) {
             menu();
             userChoice = scanner.nextInt();
-            //scanner.nextLine();
+            scanner.nextLine();
 
             switch (userChoice) {
                 case 1 -> {
