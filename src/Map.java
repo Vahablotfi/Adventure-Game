@@ -29,10 +29,6 @@ public class Map {
         room1.setSouth(room4);
         room1.setWest(null);
 
-        //ikke færdig
-        Item items = new Item("Book" , "vyuftu");
-        room1.addItem(items);
-
         room2.setNorth(null);
         room2.setEast(room3);
         room2.setWest(room1);

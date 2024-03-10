@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     Adventure newAdventure = new Adventure();
+    private Adventure adventure;
 
 
     public void startGame() {
@@ -24,10 +26,12 @@ public class UserInterface {
                     if (player.moveAround(chooseDirection())) {
                         System.out.println(player.getCurrentRoom().getName());
                         System.out.println(player.getCurrentRoom().getVisited());
-                        System.out.println(player.getCurrentRoom().getItemsInRoomArr());
+                        System.out.println(player.getCurrentRoom().getDescription());
+                        System.out.println(player.getCurrentRoom().getDescription());
+                        showInventory(player);
                         System.out.println();
                     } else {
-                        System.out.println("You can not go to that direction !!");
+                        System.out.println("You can not go in that direction!!");
                     }
                     break;
                 case 2:
@@ -55,6 +59,7 @@ public class UserInterface {
                 default:
                     System.out.println("Invalid choice");
             }
+
         }
     }
 
@@ -67,7 +72,7 @@ public class UserInterface {
     }
 
     public void help() {
-        System.out.println("Type 1 to chose which direction you wish to go in: North, South, East or West.");
+        System.out.println("Type 1 to choose which direction you wish to go in: North, South, East or West.");
         System.out.println("Type 2 to look around the room you're currently in.");
         System.out.println("Type 3 for help (like you just did)");
         System.out.println("Type 4 for inventory");
@@ -84,10 +89,9 @@ public class UserInterface {
 
     public void showInventory(Player player) {
         System.out.println("Inventory: ");
-        for (Item item : player.getCurrentRoom().getItemsInRoomArr()) {
+        for (Item item : player.getInventoryArr()) {
             System.out.println(" " + item.getShortName());
-
         }
-
     }
+
 }
