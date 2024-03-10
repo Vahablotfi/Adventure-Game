@@ -71,20 +71,21 @@ public class Player {
         StringBuilder roomInfo = new StringBuilder();
         roomInfo.append("You are in: ").append(currentRoom.getName());
         roomInfo.append("\n").append(currentRoom.getDescription());
-        roomInfo.append("\nInventory: ");
+        return roomInfo.toString();
+    }
 
+    public String showInventory() {
         List<Item> roomItems = currentRoom.getItemsInRoomArr();
+
         if (roomItems.isEmpty()) {
-            roomInfo.append("The room is empty.");
+            return "The room is empty.";
         } else {
             StringJoiner joiner = new StringJoiner(", ");
             for (Item item : roomItems) {
                 joiner.add(item.getShortName());
             }
-            roomInfo.append(joiner.toString());
+            return "Inventory: " + joiner.toString();
         }
-
-        return roomInfo.toString();
     }
 
 

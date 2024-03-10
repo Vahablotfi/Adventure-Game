@@ -14,6 +14,7 @@ public class UserInterface {
     public void playGame(Player player) {
         System.out.println("Welcome to the game!");
         System.out.println(player.look());
+        System.out.println(player.showInventory());
         int userChoice = 0;
 
         while (userChoice != 7) {
@@ -27,8 +28,6 @@ public class UserInterface {
                         System.out.println(player.getCurrentRoom().getName());
                         System.out.println(player.getCurrentRoom().getVisited());
                         System.out.println(player.getCurrentRoom().getDescription());
-                        System.out.println(player.getCurrentRoom().getDescription());
-                        System.out.println();
                     } else {
                         System.out.println("You can not go in that direction!!");
                     }
@@ -40,19 +39,16 @@ public class UserInterface {
                     help();
                     break;
                 case 4:
-                    showInventory(player);
-                    break;
-                case 5:
                     System.out.print("Enter the item name to take: ");
                     String itemToTake = scanner.nextLine();
                     player.takeItem(itemToTake);
                     break;
-                case 6:
+                case 5:
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = scanner.nextLine();
                     player.dropItem(itemToDrop);
                     break;
-                case 7:
+                case 6:
                     System.out.println("Exit game");
                     break;
                 default:
@@ -82,15 +78,10 @@ public class UserInterface {
         System.out.println("1. Chose direction");
         System.out.println("2. Look");
         System.out.println("3. Help");
-        System.out.println("4. Inventory");
-        System.out.println("5. Exit game");
+        System.out.println("4. Take");
+        System.out.println("5. Drop");
+        System.out.println("6. Exit game");
     }
 
-    public void showInventory(Player player) {
-        System.out.println("Inventory: ");
-        for (Item item : player.getInventoryArr()) {
-            System.out.println(" " + item.getShortName());
-        }
-    }
 
 }
