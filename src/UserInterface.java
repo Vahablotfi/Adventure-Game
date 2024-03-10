@@ -39,10 +39,10 @@ public class UserInterface {
                     help();
                     break;
                 case 4:
-                    System.out.print("Enter the item name to take: ");
-                    String itemToTake = scanner.nextLine();
-                    player.takeItem(itemToTake);
-                    break;
+                System.out.print("Enter the item name to take: ");
+                String itemToTake = scanner.nextLine();
+                player.takeItem(itemToTake);
+                break;
                 case 5:
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = scanner.nextLine();

@@ -38,7 +38,6 @@ public class Player {
             System.out.println("There is nothing like " + itemName + " to take around here.");
         }
     }
-
     public void dropItem(String itemName) {
         Item item = findItemInInventory(itemName);
         if (item != null) {
@@ -49,6 +48,7 @@ public class Player {
             System.out.println("You don't have anything like " + itemName + " in your inventory.");
         }
     }
+
 
     public Item findItemInInventory(String itemName) {
         for (Item item : inventoryArr) {
