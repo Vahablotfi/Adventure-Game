@@ -7,7 +7,7 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventoryArr;
 
-    public Player(Room currentRoom) {
+    public Player(Room currentRoom) {//    // Konstruktør der opretter en ny spiller og initialiserer den nuværende position og beholdning
         this.currentRoom = currentRoom;
         this.inventoryArr = new ArrayList<>();
     }
@@ -27,7 +27,7 @@ public class Player {
     public void setInventoryArr(ArrayList<Item> inventoryArr) {
         this.inventoryArr = inventoryArr;
     }
-
+    // Metode der lader spilleren tage et item fra det nuværende rum og tilføje det til inventory
     public void takeItem(String itemName) {
         Item item = currentRoom.findItem(itemName);
         if (item != null) {
@@ -38,7 +38,7 @@ public class Player {
             System.out.println("There is nothing like " + itemName + " to take around here.");
         }
     }
-
+    // Metode der lader spilleren smide et item fra inventory i det nuværende rum
     public void dropItem(String itemName) {
         Item item = findItemInInventory(itemName);
         if (item != null) {
@@ -50,7 +50,7 @@ public class Player {
         }
     }
 
-
+    // Metode der finder et item i spillerens inventory baseret på dets navn
     public Item findItemInInventory(String itemName) {
         for (Item item : inventoryArr) {
             if (item.getShortName().equalsIgnoreCase(itemName)) {
@@ -67,27 +67,27 @@ public class Player {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
-
+    // Metode der returnerer en tekstbeskrivelse af det nuværende rum
     public String look() {
         StringBuilder roomInfo = new StringBuilder();
         roomInfo.append("You are in: ").append(currentRoom.getName());
         roomInfo.append("\n").append(currentRoom.getDescription());
         return roomInfo.toString();
     }
-
+    // Metode der returnerer en liste af items i det nuværende rum
     public String showRoomInventory() {
         List<Item> roomItems = currentRoom.getItemsInRoomArr();
         if (roomItems.isEmpty()) {
             return "The room is empty.";
         } else {
-            StringJoiner joiner = new StringJoiner(", ");
+            StringJoiner joiner = new StringJoiner(", ");//opbygge en streng, der repræsenterer listen af items enten i spillerens inventory eller i det nuværende rum
             for (Item item : roomItems) {
                 joiner.add(item.getShortName());
             }
             return joiner.toString();
         }
     }
-
+    // Metode der returnerer en liste af items i spillerens inventory
     public String showInventory() {
         if (inventoryArr.isEmpty()) {
             return "Your inventory is empty";
@@ -100,7 +100,7 @@ public class Player {
         }
     }
 
-
+    // Metode der lader spilleren bevæge sig i forskellige retninger baseret på input
     public boolean moveAround(String direction) {
 
         switch (direction) {
