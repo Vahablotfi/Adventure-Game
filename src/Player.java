@@ -38,6 +38,7 @@ public class Player {
             System.out.println("There is nothing like " + itemName + " to take around here.");
         }
     }
+
     public void dropItem(String itemName) {
         Item item = findItemInInventory(itemName);
         if (item != null) {
@@ -74,9 +75,8 @@ public class Player {
         return roomInfo.toString();
     }
 
-    public String showInventory() {
+    public String showRoomInventory() {
         List<Item> roomItems = currentRoom.getItemsInRoomArr();
-
         if (roomItems.isEmpty()) {
             return "The room is empty.";
         } else {
@@ -84,7 +84,19 @@ public class Player {
             for (Item item : roomItems) {
                 joiner.add(item.getShortName());
             }
-            return "Inventory: " + joiner.toString();
+            return joiner.toString();
+        }
+    }
+
+    public String showInventory() {
+        if (inventoryArr.isEmpty()) {
+            return "Your inventory is empty";
+        } else {
+            StringJoiner joiner = new StringJoiner(", ");
+            for (Item item : inventoryArr) {
+                joiner.add(item.getShortName());
+            }
+            return " " + joiner.toString();
         }
     }
 

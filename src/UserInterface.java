@@ -14,7 +14,8 @@ public class UserInterface {
     public void playGame(Player player) {
         System.out.println("Welcome to the game!");
         System.out.println(player.look());
-        System.out.println(player.showInventory());
+        System.out.println("Items in Room: " + player.showRoomInventory());
+        System.out.println("Your Inventory: " + player.showInventory());
         int userChoice = 0;
 
         while (userChoice != 7) {
@@ -38,17 +39,20 @@ public class UserInterface {
                 case 3 -> {
                     help();
                 }
-                case 4 -> {
+                case 4 ->{
+                    System.out.println("Inventory: " + player.showInventory());
+                }
+                case 5 -> {
                     System.out.print("Enter the item name to take: ");
                     String itemToTake = scanner.nextLine();
                     player.takeItem(itemToTake);
                 }
-                case 5 -> {
+                case 6 -> {
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = scanner.nextLine();
                     player.dropItem(itemToDrop);
                 }
-                case 6 -> {
+                case 7 -> {
                     System.out.println("Exit game");
                 }
                 default -> {
@@ -79,9 +83,12 @@ public class UserInterface {
         System.out.println("1. Chose direction");
         System.out.println("2. Look");
         System.out.println("3. Help");
-        System.out.println("4. Take");
-        System.out.println("5. Drop");
-        System.out.println("6. Exit game");
+        System.out.println("4. Inventory");
+        System.out.println("5. Take");
+        System.out.println("6. Drop");
+        System.out.println("7. Exit game");
+
+
     }
 
 
