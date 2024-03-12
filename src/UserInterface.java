@@ -1,52 +1,58 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     Adventure newAdventure = new Adventure();
-    private Adventure adventure;
 
 
-    public void startGame() {
-        playGame(newAdventure.getGamePlayer());
-    }
 
-    public void playGame(Player player) {
+
+    public void playingGame() {
         System.out.println("Welcome to the game!");
-        System.out.println(player.look());
-        System.out.println(player.showInventory());
+        System.out.println(look());
+        showInventory(newAdventure.getGamePlayer().getInventoryArr());
         int userChoice = 0;
 
         while (userChoice != 7) {
             menu();
-            userChoice = scanner.nextInt();
-            scanner.nextLine();
+            userChoice = getInteger(1,7);
 
             switch (userChoice) {
                 case 1 -> {
-                    if (player.moveAround(chooseDirection())) {
-                        System.out.println(player.getCurrentRoom().getName());
-                        System.out.println(player.getCurrentRoom().getVisited());
-                        System.out.println(player.getCurrentRoom().getDescription());
-                    } else {
-                        System.out.println("You can not go in that direction!!");
+                    String direction = choosingDirection();
+                    if (newAdventure.moveAround(direction)){
+                        System.out.println(newAdventure.getCurrentRoom().getDescription());
+                        // add show room items here
+                    }else {
+                        System.out.println("you can not go that direction ");
                     }
+
                 }
                 case 2 -> {
-                    System.out.println(player.look());
+                    System.out.println(look());
                 }
                 case 3 -> {
                     help();
                 }
                 case 4 -> {
+                    showInventory(newAdventure.inventory());
                     System.out.print("Enter the item name to take: ");
                     String itemToTake = scanner.nextLine();
-                    player.takeItem(itemToTake);
+                    Item pickedItem = newAdventure.takeItem(itemToTake);
+                    System.out.println("You took the " + pickedItem.getShortName() + ".");
+                    System.out.println("There is nothing like " + itemToTake + " to take around here.");
+
                 }
                 case 5 -> {
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = scanner.nextLine();
-                    player.dropItem(itemToDrop);
+                    Item droppedItem = newAdventure.dropItem(itemToDrop);
+                    newAdventure.dropItem(itemToDrop);
+                    System.out.println("You dropped the " + droppedItem.getShortName() + ".");
+                    System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
                 }
                 case 6 -> {
                     System.out.println("Exit game");
@@ -59,12 +65,23 @@ public class UserInterface {
         }
     }
 
-    public String chooseDirection() {
+    // add get string here to get the direction from user
+    public String choosingDirection() {
         System.out.println("Choose direction");
         scanner.nextLine();
         String userDirection = scanner.nextLine();
         userDirection = userDirection.toLowerCase();
         return userDirection;
+    }
+
+
+
+    // look methode skal vise room items ogsa
+    public String look() {
+        StringBuilder roomInfo = new StringBuilder();
+        roomInfo.append("You are in: ").append(newAdventure.getCurrentRoom().getName());
+        roomInfo.append("\n").append(newAdventure.getCurrentRoom().getDescription());
+        return roomInfo.toString();
     }
 
     public void help() {
@@ -82,6 +99,45 @@ public class UserInterface {
         System.out.println("4. Take");
         System.out.println("5. Drop");
         System.out.println("6. Exit game");
+    }
+
+    public void showInventory(ArrayList<Item> playerItems) {
+        System.out.println("Inventory: ");
+        for (Item item : playerItems) {
+            System.out.println(" " + item.getShortName());
+
+        }
+    }
+
+    public String getStringInput(){
+        try {
+            String inputString = scanner.nextLine();
+
+            return inputString;
+
+        }
+        catch (InputMismatchException e){
+            System.out.println("wrong input try again!");
+            return getStringInput();
+        }
+    }
+
+    public int getInteger(int start, int end){
+        try {
+            int inputNumber = scanner.nextInt();
+
+           if (inputNumber < start || inputNumber > end ){
+               System.out.println("wrong number, try again!!");
+               return getInteger(start, end);
+           }else {
+               return inputNumber;
+           }
+
+        }
+        catch (InputMismatchException e){
+            System.out.println("wrong input try again!");
+            return getInteger(start, end);
+        }
     }
 
 

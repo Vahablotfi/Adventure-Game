@@ -8,6 +8,7 @@ public class Room {
     private Room east;
     private Room west;
     private Room south;
+
     private ArrayList<Item> itemsInRoomArr = new ArrayList<>();
 
     public Room(String name, String description) {
@@ -55,22 +56,17 @@ public class Room {
         return description;
     }
 
-    public String getVisited() {
-        if (!visited) {
+
+    public boolean getVisited() {
+            return visited;
+    }
+
+    public void setVisited() {
+        if (!visited){
             visited = true;
-            return description;
-        } else {
-            return "I've already been in this room";
         }
     }
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-
-    public void String(boolean visited) {
-        this.visited = false;
-    }
 
     public void setDescription(String description) {
         this.description = description;
