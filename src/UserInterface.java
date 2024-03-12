@@ -24,7 +24,7 @@ public class UserInterface {
                     String direction = choosingDirection();
                     if (newAdventure.moveAround(direction)){
                         System.out.println(newAdventure.getCurrentRoom().getDescription());
-                        // add show room items here
+                        printItemsInCurrentRoom();
                     }else {
                         System.out.println("you can not go that direction ");
                     }
@@ -93,6 +93,7 @@ public class UserInterface {
         StringBuilder roomInfo = new StringBuilder();
         roomInfo.append("You are in: ").append(newAdventure.getCurrentRoom().getName());
         roomInfo.append("\n").append(newAdventure.getCurrentRoom().getDescription());
+        printItemsInCurrentRoom();
         return roomInfo.toString();
     }
 
@@ -138,6 +139,7 @@ public class UserInterface {
         }
         catch (InputMismatchException e){
             System.out.println("wrong input try again!");
+            scanner.nextLine();
             return getStringInput();
         }
     }
@@ -145,6 +147,7 @@ public class UserInterface {
     public int getInteger(int start, int end){
         try {
             int inputNumber = scanner.nextInt();
+            scanner.nextLine();
 
            if (inputNumber < start || inputNumber > end ){
                System.out.println("wrong number, try again!!");
@@ -156,7 +159,16 @@ public class UserInterface {
         }
         catch (InputMismatchException e){
             System.out.println("wrong input try again!");
+            scanner.nextLine();
             return getInteger(start, end);
+        }
+    }
+
+   public void printItemsInCurrentRoom() {
+        System.out.println("Items in the current room:");
+        ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
+        for (Item item : items) {
+            System.out.println(item.getLongName());
         }
     }
 

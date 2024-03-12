@@ -13,7 +13,6 @@ public class Adventure {
     }
 
 
-
     public Map getGameMap() {
         return gameMap;
     }
@@ -39,7 +38,7 @@ public class Adventure {
     }
 
     // to show player Items
-    public ArrayList<Item> inventory(){
+    public ArrayList<Item> inventory() {
         return gamePlayer.getInventoryArr();
     }
 
@@ -103,6 +102,7 @@ public class Adventure {
 
         }
     }
+
     public Item dropItem(String itemName) {
         Item item = findItemInInventory(itemName, gamePlayer.getInventoryArr());
         if (item != null) {
