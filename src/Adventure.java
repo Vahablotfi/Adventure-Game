@@ -114,6 +114,7 @@ public class Adventure {
         }
     }
 
+
     public Item findItemInInventory(String itemName) {
         for (Item item : gamePlayer.getInventoryArr()) {
             if (item.getShortName().equalsIgnoreCase(itemName)) {
@@ -122,6 +123,8 @@ public class Adventure {
         }
         return null;
     }
+
+
 
 
 }

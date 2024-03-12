@@ -21,6 +21,7 @@ public class UserInterface {
             userChoice = getInteger(1,7);
 
             switch (userChoice) {
+                //Choose direction:
                 case 1 -> {
                     String direction = choosingDirection();
                     if (newAdventure.moveAround(direction)){
@@ -29,15 +30,21 @@ public class UserInterface {
                     }else {
                         System.out.println("you can not go that direction ");
                     }
-
                 }
+                //Look:
                 case 2 -> {
                     System.out.println(look());
                 }
+                //Inventory:
                 case 3 -> {
+                    showInventory(newAdventure.getGamePlayer().getInventoryArr());
+                }
+                //Help:
+                case 4 -> {
                     help();
                 }
-                case 4 -> {
+                //Take:
+                case 5 -> {
                     showInventory(newAdventure.inventory());
                     System.out.print("Enter the item name to take: ");
                     String itemToTake = scanner.nextLine();
@@ -46,7 +53,8 @@ public class UserInterface {
                     System.out.println("There is nothing like " + itemToTake + " to take around here.");
 
                 }
-                case 5 -> {
+                //Drop:
+                case 6 -> {
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = scanner.nextLine();
                     Item droppedItem = newAdventure.dropItem(itemToDrop);
@@ -54,7 +62,8 @@ public class UserInterface {
                     System.out.println("You dropped the " + droppedItem.getShortName() + ".");
                     System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
                 }
-                case 6 -> {
+                //Exit:
+                case 7 -> {
                     System.out.println("Exit game");
                 }
                 default -> {
@@ -89,16 +98,19 @@ public class UserInterface {
         System.out.println("Type 2 to look around the room you're currently in.");
         System.out.println("Type 3 for help (like you just did)");
         System.out.println("Type 4 for inventory");
-        System.out.println("Type 8 to exit the game.");
+        System.out.println("Type 5 to take an item");
+        System.out.println("Type 6 to drop an item");
+        System.out.println("Type 7 to exit the game.");
     }
 
     public void menu() {
         System.out.println("1. Chose direction");
         System.out.println("2. Look");
-        System.out.println("3. Help");
-        System.out.println("4. Take");
-        System.out.println("5. Drop");
-        System.out.println("6. Exit game");
+        System.out.println("3. Inventory");
+        System.out.println("4. Help");
+        System.out.println("5. Take");
+        System.out.println("6. Drop");
+        System.out.println("7. Exit game");
     }
 
     public void showInventory(ArrayList<Item> playerItems) {
