@@ -13,7 +13,6 @@ public class UserInterface {
     public void playingGame() {
         System.out.println("Welcome to the game!");
         System.out.println(look());
-        showInventory(newAdventure.getGamePlayer().getInventoryArr());
         int userChoice = 0;
 
         while (userChoice != 7) {
@@ -21,7 +20,6 @@ public class UserInterface {
             userChoice = getInteger(1,7);
 
             switch (userChoice) {
-                //Choose direction:
                 case 1 -> {
                     String direction = choosingDirection();
                     if (newAdventure.moveAround(direction)){
@@ -31,11 +29,9 @@ public class UserInterface {
                         System.out.println("you can not go that direction ");
                     }
                 }
-                //Look:
                 case 2 -> {
                     System.out.println(look());
                 }
-                //Inventory:
                 case 3 -> {
                     showInventory(newAdventure.getGamePlayer().getInventoryArr());
                 }
@@ -45,22 +41,31 @@ public class UserInterface {
                 }
                 //Take:
                 case 5 -> {
-                    showInventory(newAdventure.inventory());
+                    showInventory(newAdventure.getCurrentRoom().getItemsInRoomArr());
                     System.out.print("Enter the item name to take: ");
-                    String itemToTake = scanner.nextLine();
+                    String itemToTake = getStringInput();
                     Item pickedItem = newAdventure.takeItem(itemToTake);
-                    System.out.println("You took the " + pickedItem.getShortName() + ".");
-                    System.out.println("There is nothing like " + itemToTake + " to take around here.");
+                    if (pickedItem != null){
+                        System.out.println("You took the " + pickedItem.getShortName() + ".");
+                    }else{
+                        System.out.println("There is nothing like " + itemToTake + " to take around here.");
+                    }
+
+
 
                 }
                 //Drop:
                 case 6 -> {
                     System.out.print("Enter the item name to drop: ");
-                    String itemToDrop = scanner.nextLine();
+                    String itemToDrop = getStringInput();
                     Item droppedItem = newAdventure.dropItem(itemToDrop);
-                    newAdventure.dropItem(itemToDrop);
-                    System.out.println("You dropped the " + droppedItem.getShortName() + ".");
-                    System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
+                    if(droppedItem!= null){
+                        System.out.println("You dropped the " + droppedItem.getShortName() + ".");
+                    }else {
+                        System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
+                    }
+
+
                 }
                 //Exit:
                 case 7 -> {
@@ -74,11 +79,9 @@ public class UserInterface {
         }
     }
 
-    // add get string here to get the direction from user
     public String choosingDirection() {
         System.out.println("Choose direction");
-        scanner.nextLine();
-        String userDirection = scanner.nextLine();
+        String userDirection = getStringInput();
         userDirection = userDirection.toLowerCase();
         return userDirection;
     }
@@ -117,6 +120,7 @@ public class UserInterface {
         System.out.println("Inventory: ");
         for (Item item : playerItems) {
             System.out.println(" " + item.getShortName());
+            System.out.println(" "+ item.getLongName());
 
         }
     }
@@ -124,8 +128,12 @@ public class UserInterface {
     public String getStringInput(){
         try {
             String inputString = scanner.nextLine();
-
-            return inputString;
+            if(inputString.trim().isEmpty()){
+                System.out.println("wrong input try again");
+                return getStringInput();
+            } else {
+                return inputString;
+            }
 
         }
         catch (InputMismatchException e){

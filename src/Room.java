@@ -29,14 +29,6 @@ public class Room {
         return itemsInRoomArr;
     }
 
-    public Item findItem(String itemName) {
-        for (Item item : itemsInRoomArr) {
-            if (item.getShortName().equalsIgnoreCase(itemName)) {
-                return item;
-            }
-        }
-        return null;
-    }
 
 
     public void setItemsInRoomArr(ArrayList itemsInRoomArr) {

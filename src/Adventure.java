@@ -92,7 +92,7 @@ public class Adventure {
 
 
     public Item takeItem(String itemName) {
-        Item item = currentRoom.findItem(itemName);
+        Item item = findItemInInventory(itemName, currentRoom.getItemsInRoomArr());
         if (item != null) {
             currentRoom.removeItem(item);
             gamePlayer.addItem(item);
@@ -104,7 +104,7 @@ public class Adventure {
         }
     }
     public Item dropItem(String itemName) {
-        Item item = findItemInInventory(itemName);
+        Item item = findItemInInventory(itemName, gamePlayer.getInventoryArr());
         if (item != null) {
             gamePlayer.removeItem(item);
             currentRoom.addItem(item);
@@ -115,8 +115,8 @@ public class Adventure {
     }
 
 
-    public Item findItemInInventory(String itemName) {
-        for (Item item : gamePlayer.getInventoryArr()) {
+    public Item findItemInInventory(String itemName, ArrayList<Item> itemsList) {
+        for (Item item : itemsList) {
             if (item.getShortName().equalsIgnoreCase(itemName)) {
                 return item;
             }
