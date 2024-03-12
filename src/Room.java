@@ -30,7 +30,6 @@ public class Room {
     }
 
 
-
     public void setItemsInRoomArr(ArrayList itemsInRoomArr) {
         this.itemsInRoomArr = itemsInRoomArr;
     }
@@ -50,11 +49,11 @@ public class Room {
 
 
     public boolean getVisited() {
-            return visited;
+        return visited;
     }
 
     public void setVisited() {
-        if (!visited){
+        if (!visited) {
             visited = true;
         }
     }

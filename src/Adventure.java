@@ -9,7 +9,7 @@ public class Adventure {
         gameMap = new Map();
         gamePlayer = new Player();
         currentRoom = gameMap.getRoom1();
-
+        currentRoom.setVisited();
     }
 
 
@@ -44,12 +44,10 @@ public class Adventure {
 
 
     public boolean moveAround(String direction) {
-
         switch (direction) {
             case "go north", "n", "north" -> {
                 if (currentRoom.getNorth() != null) {
                     setCurrentRoom(currentRoom.getNorth());
-                    currentRoom.setVisited();
                     return true;
                 } else {
                     return false;
@@ -58,7 +56,6 @@ public class Adventure {
             case "go south", "s", "south" -> {
                 if (currentRoom.getSouth() != null) {
                     setCurrentRoom(currentRoom.getSouth());
-                    currentRoom.setVisited();
                     return true;
                 } else {
                     return false;
@@ -67,7 +64,6 @@ public class Adventure {
             case "go east", "e", "east" -> {
                 if (currentRoom.getEast() != null) {
                     setCurrentRoom(currentRoom.getEast());
-                    currentRoom.setVisited();
                     return true;
                 } else {
                     return false;
@@ -76,7 +72,6 @@ public class Adventure {
             case "go west", "w", "west" -> {
                 if (currentRoom.getWest() != null) {
                     setCurrentRoom(currentRoom.getWest());
-                    currentRoom.setVisited();
                     return true;
                 } else {
                     return false;
@@ -103,6 +98,10 @@ public class Adventure {
         }
     }
 
+    public void markVisitedRoom() {
+        currentRoom.setVisited();
+    }
+
     public Item dropItem(String itemName) {
         Item item = findItemInInventory(itemName, gamePlayer.getInventoryArr());
         if (item != null) {
@@ -123,8 +122,6 @@ public class Adventure {
         }
         return null;
     }
-
-
 
 
 }

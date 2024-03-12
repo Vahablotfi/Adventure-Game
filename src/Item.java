@@ -2,7 +2,7 @@ public class Item {
     private String shortName;
     private String longName;
 
-    public Item (String shortName, String longName) {
+    public Item(String shortName, String longName) {
         this.shortName = shortName;
         this.longName = longName;
     }
@@ -10,10 +10,10 @@ public class Item {
     public String getShortName() {
         return shortName;
     }
-    public String getLongName(){
+
+    public String getLongName() {
         return longName;
     }
-
 
 
 }
