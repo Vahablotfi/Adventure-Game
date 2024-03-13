@@ -40,10 +40,11 @@ public class Player {
     public void setHealth(int health) {
         this.health = health;
     }
-//    public void getHealthPoints (int points){
-//        setHealth(getHealth()+ points);
-//
-//    }
+
+    public void eatFood(Food foodName) {
+        int healthPoints = health + foodName.getHealthPoints();
+        setHealth(healthPoints);
+    }
 
 
 }

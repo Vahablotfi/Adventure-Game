@@ -13,7 +13,7 @@ public class UserInterface {
         look();
         int userChoice = 0;
 
-        while (userChoice != 7) {
+        while (userChoice != 9) {
             menu();
             userChoice = getInteger(1, 7);
 
@@ -139,6 +139,27 @@ public class UserInterface {
 
 
     public void eat() {
+        for (Item playerItems : newAdventure.getGamePlayer().getInventoryArr()) {
+            if (playerItems instanceof Food) {
+                System.out.println(playerItems.getShortName());
+            }
+        }
+
+        for (Item roomItems : newAdventure.getCurrentRoom().getItemsInRoomArr()) {
+            if (roomItems instanceof Food) {
+                System.out.println(roomItems.getShortName());
+            }
+        }
+        System.out.println("Choose a food to eat or take: ");
+        String playersChoise = getStringInput();
+        System.out.println("Choose to either eat or take food ");
+        String command = getStringInput();
+        Food choosenFood = (Food) newAdventure.playerEat(command, playersChoise);
+        if (choosenFood != null) {
+            System.out.println("You " + command + " " + playersChoise);
+        } else {
+            System.out.println("Couldn't find this food try again!!");
+        }
 
     }
 
@@ -197,8 +218,6 @@ public class UserInterface {
             System.out.println(item.getShortName());
         }
     }
-
-
 
 
 }

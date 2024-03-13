@@ -93,7 +93,7 @@ public class Map {
 
         room6.addItem(new Item("Map", "A tattered map with cryptic markings."));
         room6.addItem(new Item("Silver Coin", "A shiny silver coin."));
-        room6.addFood(new Food("Venison stew","A bowl of stew. Smells great", 20));
+        room6.addFood(new Food("Venison stew", "A bowl of stew. Smells great", 20));
 
         room7.addItem(new Item("Bedroll", "A makeshift bedroll for a weary traveler."));
         room7.addItem(new Item("Chest", "A wooden chest with a lock."));
