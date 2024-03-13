@@ -5,5 +5,8 @@ public class Food extends Item {
         super(shortName, longName);
         this.healthPoints = healthPoints;
     }
+    public int getHealthPoints() {
+        return healthPoints;
+    }
 
 }
