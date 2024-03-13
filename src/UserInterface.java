@@ -134,6 +134,8 @@ public class UserInterface {
     }
 
     public void health() {
+        int playerHealth = newAdventure.getGamePlayer().getHealth();
+        System.out.println("Your current health: " + playerHealth);
 
     }
 

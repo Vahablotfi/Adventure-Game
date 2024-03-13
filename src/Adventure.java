@@ -140,7 +140,7 @@ public class Adventure {
             currentRoom.removeFood((Food) foodInRoom);
         }
 
-        if (command == "eat") {
+        if ("eat".equals(command)) {
             gamePlayer.eatFood(foodToHandel);
 
         } else {
