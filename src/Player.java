@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 
 public class Player {
-
     private ArrayList<Item> inventoryArr;
+    private int health;
 
     public Player() {
         this.inventoryArr = new ArrayList<>();
@@ -25,6 +25,16 @@ public class Player {
     public void setInventoryArr(ArrayList<Item> inventoryArr) {
         this.inventoryArr = inventoryArr;
     }
+    public int getHealth() {
+        return health;
+    }
+    public void setHealth(int health){
+        this.health = health;
+    }
+//    public void getHealthPoints (int points){
+//        setHealth(getHealth()+ points);
+//
+//    }
 
 
 }
