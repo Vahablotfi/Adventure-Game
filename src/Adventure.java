@@ -12,7 +12,6 @@ public class Adventure {
         currentRoom.setVisited();
     }
 
-
     public Map getGameMap() {
         return gameMap;
     }
