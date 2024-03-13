@@ -18,6 +18,7 @@ public class UserInterface {
             userChoice = getInteger(1, 7);
 
             switch (userChoice) {
+                //Choose direction:
                 case 1 -> {
                     String direction = choosingDirection();
                     if (newAdventure.moveAround(direction)) {
@@ -31,19 +32,24 @@ public class UserInterface {
                         System.out.println("you can not go that direction ");
                     }
                 }
+                //look:
                 case 2 -> {
-//
                     look();
                 }
+                //Inventory:
                 case 3 -> {
                     showInventory(newAdventure.getGamePlayer().getInventoryArr());
                 }
-                //Help:
+                //Health:
                 case 4 -> {
+                    health();
+                }
+                //Help:
+                case 5 -> {
                     help();
                 }
                 //Take:
-                case 5 -> {
+                case 6 -> {
                     showInventory(newAdventure.getCurrentRoom().getItemsInRoomArr());
                     System.out.print("Enter the item name to take: ");
                     String itemToTake = getStringInput();
@@ -53,11 +59,9 @@ public class UserInterface {
                     } else {
                         System.out.println("There is nothing like " + itemToTake + " to take around here.");
                     }
-
-
                 }
                 //Drop:
-                case 6 -> {
+                case 7 -> {
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = getStringInput();
                     Item droppedItem = newAdventure.dropItem(itemToDrop);
@@ -66,11 +70,13 @@ public class UserInterface {
                     } else {
                         System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
                     }
-
-
+                }
+                //Eat:
+                case 8 -> {
+                    eat();
                 }
                 //Exit:
-                case 7 -> {
+                case 9 -> {
                     System.out.println("Exit game");
                 }
                 default -> {
@@ -101,21 +107,26 @@ public class UserInterface {
     public void help() {
         System.out.println("Type 1 to choose which direction you wish to go in: North, South, East or West.");
         System.out.println("Type 2 to look around the room you're currently in.");
-        System.out.println("Type 3 for help (like you just did)");
-        System.out.println("Type 4 for inventory");
-        System.out.println("Type 5 to take an item");
-        System.out.println("Type 6 to drop an item");
-        System.out.println("Type 7 to exit the game.");
+        System.out.println("Type 3 to see player's inventory");
+        System.out.println("Type 4 to see your health");
+        System.out.println("Type 5 for help (like you just did)");
+        System.out.println("Type 6 to take an item");
+        System.out.println("Type 7 to drop an item");
+        System.out.println("Type 8 to eat");
+        System.out.println("Type 9 to exit the game.");
     }
 
     public void menu() {
         System.out.println("1. Chose direction");
         System.out.println("2. Look");
         System.out.println("3. Inventory");
-        System.out.println("4. Help");
-        System.out.println("5. Take");
-        System.out.println("6. Drop");
-        System.out.println("7. Exit game");
+        System.out.println("4. Health");
+        System.out.println("5. Help");
+        System.out.println("6. Take");
+        System.out.println("7. Drop");
+        System.out.println("8. Eat");
+        System.out.println("9. Exit game");
+
     }
 
     public void showInventory(ArrayList<Item> playerItems) {
@@ -127,6 +138,14 @@ public class UserInterface {
                 System.out.println(" " + item.getShortName() + ": " + item.getLongName());
             }
         }
+    }
+
+    public void health() {
+
+    }
+
+    public void eat() {
+
     }
 
     public String getStringInput() {
