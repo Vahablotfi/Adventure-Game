@@ -6,7 +6,12 @@ public class Food extends Item {
         this.healthPoints = healthPoints;
     }
 
+    public void getHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
     }
+
 }
