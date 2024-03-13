@@ -25,10 +25,12 @@ public class Player {
     public void setInventoryArr(ArrayList<Item> inventoryArr) {
         this.inventoryArr = inventoryArr;
     }
+
     public int getHealth() {
         return health;
     }
-    public void setHealth(int health){
+
+    public void setHealth(int health) {
         this.health = health;
     }
 //    public void getHealthPoints (int points){

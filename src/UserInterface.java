@@ -194,7 +194,7 @@ public class UserInterface {
         System.out.println("Items in this room:");
         ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
         for (Item item : items) {
-            System.out.println(item.getLongName());
+            System.out.println(item.getShortName());
         }
     }
 
