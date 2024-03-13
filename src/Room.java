@@ -30,7 +30,7 @@ public class Room {
     }
 
     public void removeFood(Food food) {
-        itemsInRoomArr.add(food);
+        itemsInRoomArr.remove(food);
     }
 
     public ArrayList<Item> getItemsInRoomArr() {
