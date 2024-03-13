@@ -44,12 +44,9 @@ public class UserInterface {
                 case 4 -> {
                     health();
                 }
-                //Help:
-                case 5 -> {
-                    help();
-                }
                 //Take:
-                case 6 -> {
+                case 5 -> {
+                    //TODO Udskrive "items in room" i stedet for "inventory"
                     showInventory(newAdventure.getCurrentRoom().getItemsInRoomArr());
                     System.out.print("Enter the item name to take: ");
                     String itemToTake = getStringInput();
@@ -61,7 +58,8 @@ public class UserInterface {
                     }
                 }
                 //Drop:
-                case 7 -> {
+                case 6 -> {
+                    //TODO Udskrive spillerens inventory her
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = getStringInput();
                     Item droppedItem = newAdventure.dropItem(itemToDrop);
@@ -72,8 +70,12 @@ public class UserInterface {
                     }
                 }
                 //Eat:
-                case 8 -> {
+                case 7 -> {
                     eat();
+                }
+                //Help:
+                case 8 -> {
+                    help();
                 }
                 //Exit:
                 case 9 -> {
@@ -86,6 +88,22 @@ public class UserInterface {
 
         }
     }
+
+
+    public void menu() {
+        System.out.println();
+        System.out.println("1. Chose direction");
+        System.out.println("2. Look");
+        System.out.println("3. Inventory");
+        System.out.println("4. Health");
+        System.out.println("5. Take");
+        System.out.println("6. Drop");
+        System.out.println("7. Eat");
+        System.out.println("8. Help");
+        System.out.println("9. Exit game");
+
+    }
+
 
     public String choosingDirection() {
         System.out.println("Choose direction");
@@ -104,34 +122,9 @@ public class UserInterface {
 
     }
 
-    public void help() {
-        System.out.println("Type 1 to choose which direction you wish to go in: North, South, East or West.");
-        System.out.println("Type 2 to look around the room you're currently in.");
-        System.out.println("Type 3 to see player's inventory");
-        System.out.println("Type 4 to see your health");
-        System.out.println("Type 5 for help (like you just did)");
-        System.out.println("Type 6 to take an item");
-        System.out.println("Type 7 to drop an item");
-        System.out.println("Type 8 to eat");
-        System.out.println("Type 9 to exit the game.");
-    }
-
-    public void menu() {
-        System.out.println("1. Chose direction");
-        System.out.println("2. Look");
-        System.out.println("3. Inventory");
-        System.out.println("4. Health");
-        System.out.println("5. Help");
-        System.out.println("6. Take");
-        System.out.println("7. Drop");
-        System.out.println("8. Eat");
-        System.out.println("9. Exit game");
-
-    }
-
     public void showInventory(ArrayList<Item> playerItems) {
         if (playerItems.isEmpty()) {
-            System.out.println("You have nothing, better to pick a weapon.");
+            System.out.println("You have nothing in your inventory, better to pick a weapon.");
         } else {
             System.out.println("Inventory: ");
             for (Item item : playerItems) {
@@ -144,8 +137,21 @@ public class UserInterface {
 
     }
 
+
     public void eat() {
 
+    }
+
+    public void help() {
+        System.out.println("Type 1 to choose which direction you wish to go in: North, South, East or West.");
+        System.out.println("Type 2 to look around the room you're currently in.");
+        System.out.println("Type 3 to see what's in your inventory");
+        System.out.println("Type 4 to see your health score");
+        System.out.println("Type 5 to choose an item to take from the room you're in");
+        System.out.println("Type 6 to choose an item from your inventory to drop");
+        System.out.println("Type 7 to eat something from the room your in");
+        System.out.println("Type 8 for help (like you just did)");
+        System.out.println("Type 9 to exit the game.\n");
     }
 
     public String getStringInput() {
@@ -188,7 +194,7 @@ public class UserInterface {
         System.out.println("Items in this room:");
         ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
         for (Item item : items) {
-            System.out.println(item.getLongName());
+            System.out.println(item.getShortName());
         }
     }
 
