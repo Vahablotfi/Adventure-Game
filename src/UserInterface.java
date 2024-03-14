@@ -86,7 +86,7 @@ public class UserInterface {
 
     public void menu() {
         System.out.println();
-        System.out.println("Choose direction");
+        System.out.println("Choose direction: s/n/w/e");
         System.out.println("Look");
         System.out.println("Inventory");
         System.out.println("Health");
