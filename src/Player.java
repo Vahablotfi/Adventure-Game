@@ -17,13 +17,6 @@ public class Player {
         inventoryArr.remove(item);
     }
 
-    public void addFood(Food food) {
-        inventoryArr.add(food);
-    }
-
-    public void removeFood(Food food) {
-        inventoryArr.add(food);
-    }
 
     public ArrayList<Item> getInventoryArr() {
         return inventoryArr;
