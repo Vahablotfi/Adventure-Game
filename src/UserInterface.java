@@ -11,15 +11,19 @@ public class UserInterface {
     public void playingGame() {
         System.out.println("Welcome to the game!");
         look();
-        int userChoice = 0;
+        String userChoice = "0";
 
-        while (userChoice != 9) {
-            menu();
-            userChoice = getInteger(1, 7);
+        menu();
+
+        while (!userChoice.equals("exit")) {
+
+            //userChoice = getInteger(1, 7);
+            userChoice = getStringInput();
+            userChoice = userChoice.toLowerCase();
 
             switch (userChoice) {
                 //Choose direction:
-                case 1 -> {
+                case "choose direction", "direction" -> {
                     String direction = choosingDirection();
                     if (newAdventure.moveAround(direction)) {
                         look();
@@ -33,19 +37,19 @@ public class UserInterface {
                     }
                 }
                 //look:
-                case 2 -> {
+                case "look" -> {
                     look();
                 }
                 //Inventory:
-                case 3 -> {
+                case "inventory" -> {
                     showInventory(newAdventure.getGamePlayer().getInventoryArr());
                 }
                 //Health:
-                case 4 -> {
+                case "health" -> {
                     health();
                 }
                 //Take:
-                case 5 -> {
+                case "take" -> {
                     //TODO Udskrive "items in room" i stedet for "inventory"
                     showInventory(newAdventure.getCurrentRoom().getItemsInRoomArr());
                     System.out.print("Enter the item name to take: ");
@@ -58,7 +62,7 @@ public class UserInterface {
                     }
                 }
                 //Drop:
-                case 6 -> {
+                case "drop" -> {
                     showInventory(newAdventure.getGamePlayer().getInventoryArr());
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = getStringInput();
@@ -70,15 +74,15 @@ public class UserInterface {
                     }
                 }
                 //Eat:
-                case 7 -> {
+                case "eat" -> {
                     eat();
                 }
                 //Help:
-                case 8 -> {
+                case "help" -> {
                     help();
                 }
                 //Exit:
-                case 9 -> {
+                case "exit game", "exit" -> {
                     System.out.println("Exit game");
                 }
                 default -> {
@@ -92,15 +96,15 @@ public class UserInterface {
 
     public void menu() {
         System.out.println();
-        System.out.println("1. Chose direction");
-        System.out.println("2. Look");
-        System.out.println("3. Inventory");
-        System.out.println("4. Health");
-        System.out.println("5. Take");
-        System.out.println("6. Drop");
-        System.out.println("7. Eat");
-        System.out.println("8. Help");
-        System.out.println("9. Exit game");
+        System.out.println("Chose direction");
+        System.out.println("Look");
+        System.out.println("Inventory");
+        System.out.println("Health");
+        System.out.println("Take");
+        System.out.println("Drop");
+        System.out.println("Eat");
+        System.out.println("Help");
+        System.out.println("Exit game");
 
     }
 
@@ -166,15 +170,15 @@ public class UserInterface {
     }
 
     public void help() {
-        System.out.println("Type 1 to choose which direction you wish to go in: North, South, East or West.");
-        System.out.println("Type 2 to look around the room you're currently in.");
-        System.out.println("Type 3 to see what's in your inventory");
-        System.out.println("Type 4 to see your health score");
-        System.out.println("Type 5 to choose an item to take from the room you're in");
-        System.out.println("Type 6 to choose an item from your inventory to drop");
-        System.out.println("Type 7 to eat something from the room your in");
-        System.out.println("Type 8 for help (like you just did)");
-        System.out.println("Type 9 to exit the game.\n");
+        System.out.println("To choose which direction you wish to go in type North, South, East or West.");
+        System.out.println("Type look to look around the room you're currently in.");
+        System.out.println("Type inventory to see what's in your inventory");
+        System.out.println("Type health to see your health score");
+        System.out.println("Type take to choose an item to take from the room you're in");
+        System.out.println("Type inventory to choose an item from your inventory to drop");
+        System.out.println("Type eat to eat something from the room your in");
+        System.out.println("Type help for help (like you just did)");
+        System.out.println("Type exit to exit the game.\n");
     }
 
     public String getStringInput() {
