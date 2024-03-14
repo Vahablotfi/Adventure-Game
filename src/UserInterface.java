@@ -59,7 +59,7 @@ public class UserInterface {
                 }
                 //Drop:
                 case 6 -> {
-                    //TODO Udskrive spillerens inventory her
+                    showInventory(newAdventure.getGamePlayer().getInventoryArr());
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = getStringInput();
                     Item droppedItem = newAdventure.dropItem(itemToDrop);
