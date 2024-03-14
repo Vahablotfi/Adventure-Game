@@ -12,12 +12,10 @@ public class UserInterface {
         System.out.println("Welcome to the game!");
         look();
         String userChoice = "0";
-
         menu();
 
         while (!userChoice.equals("exit")) {
 
-            //userChoice = getInteger(1, 7);
             userChoice = getStringInput();
             userChoice = userChoice.toLowerCase();
 
@@ -42,7 +40,8 @@ public class UserInterface {
                 }
                 //Inventory:
                 case "inventory" -> {
-                    showInventory(newAdventure.getGamePlayer().getInventoryArr());
+                    System.out.println("Inventory: ");
+                    showItemInArray(newAdventure.getGamePlayer().getInventoryArr());
                 }
                 //Health:
                 case "health" -> {
@@ -50,8 +49,8 @@ public class UserInterface {
                 }
                 //Take:
                 case "take" -> {
-                    //TODO Udskrive "items in room" i stedet for "inventory"
-                    showInventory(newAdventure.getCurrentRoom().getItemsInRoomArr());
+                    System.out.println("Items in this room: ");
+                    showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
                     System.out.print("Enter the item name to take: ");
                     String itemToTake = getStringInput();
                     Item pickedItem = newAdventure.takeItem(itemToTake);
@@ -63,7 +62,8 @@ public class UserInterface {
                 }
                 //Drop:
                 case "drop" -> {
-                    showInventory(newAdventure.getGamePlayer().getInventoryArr());
+                    System.out.println("Inventory: ");
+                    showItemInArray(newAdventure.getGamePlayer().getInventoryArr());
                     System.out.print("Enter the item name to drop: ");
                     String itemToDrop = getStringInput();
                     Item droppedItem = newAdventure.dropItem(itemToDrop);
@@ -126,11 +126,10 @@ public class UserInterface {
 
     }
 
-    public void showInventory(ArrayList<Item> playerItems) {
+    public void showItemInArray(ArrayList<Item> playerItems) {
         if (playerItems.isEmpty()) {
-            System.out.println("You have nothing in your inventory, better to pick a weapon.");
+            System.out.println("Empty");
         } else {
-            System.out.println("Inventory: ");
             for (Item item : playerItems) {
                 System.out.println(" " + item.getShortName() + ": " + item.getLongName());
             }
