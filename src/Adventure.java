@@ -10,6 +10,7 @@ public class Adventure {
         gamePlayer = new Player();
         currentRoom = gameMap.getRoom1();
         currentRoom.setVisited();
+        gamePlayer.setHealth(100);
     }
 
     public Map getGameMap() {
