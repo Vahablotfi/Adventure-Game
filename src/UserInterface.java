@@ -82,6 +82,24 @@ public class UserInterface {
             return getStringInput();
         }
     }
+//    public int getInteger(int start, int end) {
+//        try {
+//            int inputNumber = scanner.nextInt();
+//            scanner.nextLine();
+//
+//            if (inputNumber < start || inputNumber > end) {
+//                System.out.println("wrong number, try again!!");
+//                return getInteger(start, end);
+//            } else {
+//                return inputNumber;
+//            }
+//
+//        } catch (InputMismatchException e) {
+//            System.out.println("wrong input try again!");
+//            scanner.nextLine();
+//            return getInteger(start, end);
+//        }
+//    }
 
 
     public void menu() {
@@ -180,38 +198,5 @@ public class UserInterface {
     }
 
 }
-//    public String getStringInput() {
-//        try {
-//            String inputString = scanner.nextLine();
-//            if (inputString.trim().isEmpty()) {
-//                System.out.println("wrong input try again");
-//                return getStringInput();
-//            } else {
-//                return inputString;
-//            }
-//
-//        } catch (InputMismatchException e) {
-//            System.out.println("wrong input try again!");
-//            scanner.nextLine();
-//            return getStringInput();
-//        }
-//    }
-//
-//    public int getInteger(int start, int end) {
-//        try {
-//            int inputNumber = scanner.nextInt();
-//            scanner.nextLine();
-//
-//            if (inputNumber < start || inputNumber > end) {
-//                System.out.println("wrong number, try again!!");
-//                return getInteger(start, end);
-//            } else {
-//                return inputNumber;
-//            }
-//
-//        } catch (InputMismatchException e) {
-//            System.out.println("wrong input try again!");
-//            scanner.nextLine();
-//            return getInteger(start, end);
-//        }
-//    }
+
+
