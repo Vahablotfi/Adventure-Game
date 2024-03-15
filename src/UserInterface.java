@@ -82,25 +82,6 @@ public class UserInterface {
             return getStringInput();
         }
     }
-//    public int getInteger(int start, int end) {
-//        try {
-//            int inputNumber = scanner.nextInt();
-//            scanner.nextLine();
-//
-//            if (inputNumber < start || inputNumber > end) {
-//                System.out.println("wrong number, try again!!");
-//                return getInteger(start, end);
-//            } else {
-//                return inputNumber;
-//            }
-//
-//        } catch (InputMismatchException e) {
-//            System.out.println("wrong input try again!");
-//            scanner.nextLine();
-//            return getInteger(start, end);
-//        }
-//    }
-
 
     public void menu() {
         System.out.println();
@@ -115,14 +96,6 @@ public class UserInterface {
         System.out.println("Exit game");
 
     }
-
-
-//    public String choosingDirection() {
-//        System.out.println("Choose direction");
-//        String userDirection = getStringInput();
-//        userDirection = userDirection.toLowerCase();
-//        return userDirection;
-//    }
 
 
     public void look() {
@@ -198,5 +171,32 @@ public class UserInterface {
     }
 
 }
+
+//    public String choosingDirection() {
+//        System.out.println("Choose direction");
+//        String userDirection = getStringInput();
+//        userDirection = userDirection.toLowerCase();
+//        return userDirection;
+//    }
+
+//    public int getInteger(int start, int end) {
+//        try {
+//            int inputNumber = scanner.nextInt();
+//            scanner.nextLine();
+//
+//            if (inputNumber < start || inputNumber > end) {
+//                System.out.println("wrong number, try again!!");
+//                return getInteger(start, end);
+//            } else {
+//                return inputNumber;
+//            }
+//
+//        } catch (InputMismatchException e) {
+//            System.out.println("wrong input try again!");
+//            scanner.nextLine();
+//            return getInteger(start, end);
+//        }
+//    }
+
 
 
