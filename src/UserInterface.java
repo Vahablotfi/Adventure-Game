@@ -74,7 +74,12 @@ public class UserInterface {
                 case "attack" -> {
                     System.out.println("Choose a weapon to attack with: ");
                     String weaponName = getStringInput();
-
+                    Weapon equippedWeapon = newAdventure.getEquippedWeapon();
+                    if (equippedWeapon != null && equippedWeapon.getShortName().equalsIgnoreCase(weaponName)) {
+                        System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
+                    } else {
+                        System.out.println("You don't have a weapon named " + weaponName + " equipped.");
+                    }
                 }
                 case "help" -> help();
                 case "exit", "exit game" -> System.out.println("Exiting game.");

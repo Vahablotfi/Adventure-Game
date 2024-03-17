@@ -150,11 +150,15 @@ public class Adventure {
 
         return foodToHandel;
     }
-    public Weapon equipWeapon(String weaponName){
-        Item weapon = findItemInInventory(weaponName, gamePlayer.getInventoryArr());
-        if (weapon instanceof Weapon ){
-            gamePlayer.setEquippedWeapon((Weapon) weapon);
-            return (Weapon) weapon;
+
+    public Weapon equipWeapon(String weaponName) {
+        ArrayList<Item> inventory = gamePlayer.getInventoryArr();
+
+        for (Item item : inventory) {
+            if (item instanceof Weapon && item.getShortName().equalsIgnoreCase(weaponName)) {
+                gamePlayer.setEquippedWeapon((Weapon) item);
+                return (Weapon) item;
+            }
         }
         return null;
     }
