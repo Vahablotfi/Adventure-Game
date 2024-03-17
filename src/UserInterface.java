@@ -61,7 +61,7 @@ public class UserInterface {
                     }
                 }
                 case "eat" -> eat();
-                case "equip"->{
+                case "equip" -> {
                     System.out.println("Enter name of the weapon to equip: ");
                     String weaponName = getStringInput();
                     Weapon equippedWeapon = newAdventure.equipWeapon(weaponName);
@@ -71,7 +71,7 @@ public class UserInterface {
                         System.out.println("You don't have a weapon named: " + weaponName + " in your inventory.");
                     }
                 }
-                case "attack"->{
+                case "attack" -> {
                     System.out.println("Choose a weapon to attack with: ");
                     String weaponName = getStringInput();
 
@@ -106,6 +106,8 @@ public class UserInterface {
         System.out.println("Health");
         System.out.println("Take");
         System.out.println("Drop");
+        System.out.println("Equip");
+        System.out.println("Attack");
         System.out.println("Eat");
         System.out.println("Help");
         System.out.println("Exit game");
@@ -171,7 +173,9 @@ public class UserInterface {
         System.out.println("Type: 'health' to see your health score");
         System.out.println("Type: 'take' to choose an item to take from the room you're in");
         System.out.println("Type: inventory to choose an item from your inventory to drop");
+        System.out.println("Type: 'equip'");
         System.out.println("Type: 'eat' to eat something from the room your in");
+        System.out.println("Type: 'attack' to attack the enemy");
         System.out.println("Type: 'help' for help (like you just did)");
         System.out.println("Type: 'exit' to exit the game.\n");
     }
@@ -187,31 +191,7 @@ public class UserInterface {
 
 }
 
-//    public String choosingDirection() {
-//        System.out.println("Choose direction");
-//        String userDirection = getStringInput();
-//        userDirection = userDirection.toLowerCase();
-//        return userDirection;
-//    }
 
-//    public int getInteger(int start, int end) {
-//        try {
-//            int inputNumber = scanner.nextInt();
-//            scanner.nextLine();
-//
-//            if (inputNumber < start || inputNumber > end) {
-//                System.out.println("wrong number, try again!!");
-//                return getInteger(start, end);
-//            } else {
-//                return inputNumber;
-//            }
-//
-//        } catch (InputMismatchException e) {
-//            System.out.println("wrong input try again!");
-//            scanner.nextLine();
-//            return getInteger(start, end);
-//        }
-//    }
 
 
 
