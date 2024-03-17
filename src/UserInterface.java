@@ -61,6 +61,21 @@ public class UserInterface {
                     }
                 }
                 case "eat" -> eat();
+                case "equip"->{
+                    System.out.println("Enter name of the weapon to equip: ");
+                    String weaponName = getStringInput();
+                    Weapon equippedWeapon = newAdventure.equipWeapon(weaponName);
+                    if (equippedWeapon != null) {
+                        System.out.println("You equipped the: " + equippedWeapon.getShortName() + ".");
+                    } else {
+                        System.out.println("You don't have a weapon named: " + weaponName + " in your inventory.");
+                    }
+                }
+                case "attack"->{
+                    System.out.println("Choose a weapon to attack with: ");
+                    String weaponName = getStringInput();
+
+                }
                 case "help" -> help();
                 case "exit", "exit game" -> System.out.println("Exiting game.");
                 default -> System.out.println("Invalid choice.");
