@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Player {
     private ArrayList<Item> inventoryArr;
     private int health;
+    private Weapon equippedWeapon;
 
 
 
@@ -12,6 +13,14 @@ public class Player {
     }
 
 
+
+    public Weapon getEquippedWeapon() {
+        return  equippedWeapon;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon){
+        this.equippedWeapon = equippedWeapon;
+    }
 
     public void addItem(Item item) {
         inventoryArr.add(item);

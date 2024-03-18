@@ -4,7 +4,7 @@ public class Adventure {
     private Map gameMap;
     private Player gamePlayer;
     private Room currentRoom;
-    private Weapon equippedWeapon;
+
 
     public Adventure() {
         gameMap = new Map();
@@ -14,13 +14,7 @@ public class Adventure {
         gamePlayer.setHealth(100);
     }
 
-    public Weapon getEquippedWeapon() {
-        return  equippedWeapon;
-    }
 
-    public void setEquippedWeapon(Weapon equippedWeapon){
-        this.equippedWeapon = equippedWeapon;
-    }
 
     public Map getGameMap() {
         return gameMap;
@@ -137,7 +131,6 @@ public class Adventure {
         Item foodInRoom = findItemInArray(foodName, currentRoom.getItemsInRoomArr());
         Food foodToHandel;
 
-
         if (foodInInventory == null && foodInRoom == null) {
             return null;
         } else if (foodInInventory != null) {
@@ -162,8 +155,9 @@ public class Adventure {
 
     public Weapon equipWeapon(String weaponName) {
         Item weaponToTake = findItemInArray(weaponName, inventory());
-        Item equippedWeapon = (weaponToTake instanceof Weapon) ? weaponToTake : null;
-        return (Weapon) equippedWeapon;
+        Weapon equippedWeapon = (weaponToTake instanceof Weapon) ? (Weapon) weaponToTake : null;
+        gamePlayer.setEquippedWeapon(equippedWeapon);
+        return equippedWeapon;
     }
 
 }
