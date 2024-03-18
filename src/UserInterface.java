@@ -12,9 +12,9 @@ public class UserInterface {
         System.out.println("Welcome to the game!");
         look();
         menu();
-        String userChoice;
+        String userChoice = " ";
 
-        do {
+        while (!userChoice.equals("exit")){
             userChoice = getStringInput().toLowerCase();
 
             switch (userChoice) {
@@ -60,7 +60,10 @@ public class UserInterface {
                         System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
                     }
                 }
-                case "eat" -> eat();
+                case String s when s.startsWith("eat") -> {
+                 String[] foodToEat = userChoice.split(" ");
+                 eat(foodToEat[1]);
+                }
                 case "equip" -> {
                     System.out.println("Enter name of the weapon to equip: ");
                     String weaponName = getStringInput();
@@ -85,7 +88,7 @@ public class UserInterface {
                 case "exit", "exit game" -> System.out.println("Exiting game.");
                 default -> System.out.println("Invalid choice.");
             }
-        } while (!userChoice.equals("exit"));
+        }
     }
 
     public String getStringInput() {
@@ -146,25 +149,11 @@ public class UserInterface {
     }
 
 
-    public void eat() {
-        for (Item playerItems : newAdventure.getGamePlayer().getInventoryArr()) {
-            if (playerItems instanceof Food) {
-                System.out.println(playerItems.getShortName());
-            }
-        }
+    public void eat(String foodName) {
 
-        for (Item roomItems : newAdventure.getCurrentRoom().getItemsInRoomArr()) {
-            if (roomItems instanceof Food) {
-                System.out.println(roomItems.getShortName());
-            }
-        }
-        System.out.println("Choose a food to eat or take: ");
-        String playersChoise = getStringInput();
-        System.out.println("Choose to either eat or take food ");
-        String command = getStringInput();
-        Food choosenFood = (Food) newAdventure.playerEat(command, playersChoise);
+        Food choosenFood = (Food) newAdventure.playerEat(foodName);
         if (choosenFood != null) {
-            System.out.println("You " + command + " " + playersChoise);
+            System.out.println("You ate " + foodName);
         } else {
             System.out.println("Couldn't find this food try again!!");
         }

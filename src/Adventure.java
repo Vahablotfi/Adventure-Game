@@ -126,7 +126,7 @@ public class Adventure {
         return null;
     }
 
-    public Item playerEat(String command, String foodName) {
+    public Item playerEat(String foodName) {
         Item foodInInventory = findItemInArray(foodName, gamePlayer.getInventoryArr());
         Item foodInRoom = findItemInArray(foodName, currentRoom.getItemsInRoomArr());
         Food foodToHandel;
@@ -135,19 +135,14 @@ public class Adventure {
             return null;
         } else if (foodInInventory != null) {
             foodToHandel = (Food) foodInInventory;
+            gamePlayer.eatFood(foodToHandel);
             gamePlayer.removeItem(foodInInventory);
 
         } else {
 
             foodToHandel = (Food) foodInRoom;
-            currentRoom.removeFood((Food) foodInRoom);
-        }
-
-        if ("eat".equals(command)) {
             gamePlayer.eatFood(foodToHandel);
-
-        } else {
-            gamePlayer.addItem(foodToHandel);
+            currentRoom.removeFood((Food) foodInRoom);
         }
 
         return foodToHandel;
