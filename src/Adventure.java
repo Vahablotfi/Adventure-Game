@@ -4,6 +4,7 @@ public class Adventure {
     private Map gameMap;
     private Player gamePlayer;
     private Room currentRoom;
+    private Weapon equippedWeapon;
 
     public Adventure() {
         gameMap = new Map();
@@ -11,6 +12,14 @@ public class Adventure {
         currentRoom = gameMap.getRoom1();
         currentRoom.setVisited();
         gamePlayer.setHealth(100);
+    }
+
+    public Weapon getEquippedWeapon() {
+        return  equippedWeapon;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon){
+        this.equippedWeapon = equippedWeapon;
     }
 
     public Map getGameMap() {
@@ -86,7 +95,7 @@ public class Adventure {
 
 
     public Item takeItem(String itemName) {
-        Item item = findItemInInventory(itemName, currentRoom.getItemsInRoomArr());
+        Item item = findItemInArray(itemName, currentRoom.getItemsInRoomArr());
         if (item != null) {
             currentRoom.removeItem(item);
             gamePlayer.addItem(item);
@@ -103,7 +112,7 @@ public class Adventure {
     }
 
     public Item dropItem(String itemName) {
-        Item item = findItemInInventory(itemName, gamePlayer.getInventoryArr());
+        Item item = findItemInArray(itemName, gamePlayer.getInventoryArr());
         if (item != null) {
             gamePlayer.removeItem(item);
             currentRoom.addItem(item);
@@ -114,7 +123,7 @@ public class Adventure {
     }
 
 
-    public Item findItemInInventory(String itemName, ArrayList<Item> itemsList) {
+    public Item findItemInArray(String itemName, ArrayList<Item> itemsList) {
         for (Item item : itemsList) {
             if (item.getShortName().equalsIgnoreCase(itemName)) {
                 return item;
@@ -124,8 +133,8 @@ public class Adventure {
     }
 
     public Item playerEat(String command, String foodName) {
-        Item foodInInventory = findItemInInventory(foodName, gamePlayer.getInventoryArr());
-        Item foodInRoom = findItemInInventory(foodName, currentRoom.getItemsInRoomArr());
+        Item foodInInventory = findItemInArray(foodName, gamePlayer.getInventoryArr());
+        Item foodInRoom = findItemInArray(foodName, currentRoom.getItemsInRoomArr());
         Food foodToHandel;
 
 
@@ -152,20 +161,10 @@ public class Adventure {
     }
 
     public Weapon equipWeapon(String weaponName) {
-        ArrayList<Item> inventory = gamePlayer.getInventoryArr();
-
-        for (Item item : inventory) {
-            if (item instanceof Weapon && item.getShortName().equalsIgnoreCase(weaponName)) {
-                gamePlayer.setEquippedWeapon((Weapon) item);
-                return (Weapon) item;
-            }
-        }
-        return null;
+        Item weaponToTake = findItemInArray(weaponName, inventory());
+        Item equippedWeapon = (weaponToTake instanceof Weapon) ? weaponToTake : null;
+        return (Weapon) equippedWeapon;
     }
-    public Weapon getEquippedWeapon(){
-        return gamePlayer.getEquippedWeapon();
-    }
-
 
 }
 
