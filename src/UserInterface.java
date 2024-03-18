@@ -14,7 +14,7 @@ public class UserInterface {
         menu();
         String userChoice = " ";
 
-        while (!userChoice.equals("exit")){
+        while (!userChoice.equals("exit")) {
             userChoice = getStringInput().toLowerCase();
 
             switch (userChoice) {
@@ -36,17 +36,10 @@ public class UserInterface {
                     showItemInArray(newAdventure.getGamePlayer().getInventoryArr());
                 }
                 case "health" -> health();
-                case "take" -> {
-                    System.out.println("Items in this room:");
-                    showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
-                    System.out.print("Enter the item name to take: ");
-                    String itemToTake = getStringInput();
-                    Item pickedItem = newAdventure.takeItem(itemToTake);
-                    if (pickedItem != null) {
-                        System.out.println("You took the " + pickedItem.getShortName() + ".");
-                    } else {
-                        System.out.println("There is nothing like " + itemToTake + " to take around here.");
-                    }
+                //TAKE:
+                case String s when s.startsWith("take") -> {
+                    String[] itemToTake = userChoice.split(" ");
+                    takeItem(itemToTake[1]);
                 }
                 case "drop" -> {
                     System.out.println("Inventory:");
@@ -60,9 +53,10 @@ public class UserInterface {
                         System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
                     }
                 }
+                //EAT:
                 case String s when s.startsWith("eat") -> {
-                 String[] foodToEat = userChoice.split(" ");
-                 eat(foodToEat[1]);
+                    String[] foodToEat = userChoice.split(" ");
+                    eat(foodToEat[1]);
                 }
                 case "equip" -> {
                     System.out.println("Enter name of the weapon to equip: ");
@@ -119,7 +113,7 @@ public class UserInterface {
         roomInfo.append("You are in: ").append(newAdventure.getCurrentRoom().getName());
         roomInfo.append("\n").append(newAdventure.getCurrentRoom().getDescription());
         System.out.println(roomInfo.toString());
-        printItemsInCurrentRoom();
+        showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
 
     }
 
@@ -130,6 +124,15 @@ public class UserInterface {
             for (Item item : playerItems) {
                 System.out.println(" " + item.getShortName() + ": " + item.getLongName());
             }
+        }
+    }
+
+    public void takeItem(String itemToTake) {
+        Item choosenItem = (Item) newAdventure.takeItem(itemToTake);
+        if (choosenItem != null) {
+            System.out.println("You took the " + choosenItem.getShortName() + ".");
+        } else {
+            System.out.println("There is nothing like " + itemToTake + " to take around here.");
         }
     }
 
@@ -166,14 +169,6 @@ public class UserInterface {
     }
 
 
-    public void printItemsInCurrentRoom() {
-        System.out.println("Items in this room:");
-        ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
-        for (Item item : items) {
-            System.out.println(item.getShortName());
-        }
-    }
-
     public void attack() {
         System.out.println("Choose a weapon to attack with: ");
         String weaponName = getStringInput();
@@ -185,8 +180,8 @@ public class UserInterface {
         }
     }
 
-}
 
+}
 
 
 
