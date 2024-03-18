@@ -7,7 +7,6 @@ public class Player {
     private Weapon equippedWeapon;
 
 
-
     public Player() {
         this.inventoryArr = new ArrayList<>();
     }
@@ -51,6 +50,7 @@ public class Player {
         int healthPoints = health + foodName.getHealthPoints();
         setHealth(healthPoints);
     }
+
 
 
 }

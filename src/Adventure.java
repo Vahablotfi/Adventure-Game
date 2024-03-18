@@ -15,7 +15,6 @@ public class Adventure {
     }
 
 
-
     public Map getGameMap() {
         return gameMap;
     }
@@ -153,6 +152,7 @@ public class Adventure {
         Weapon equippedWeapon = (weaponToTake instanceof Weapon) ? (Weapon) weaponToTake : null;
         gamePlayer.setEquippedWeapon(equippedWeapon);
         return equippedWeapon;
+
     }
 
 }
