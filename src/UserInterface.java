@@ -74,16 +74,7 @@ public class UserInterface {
                         System.out.println("You don't have a weapon named: " + weaponName + " in your inventory.");
                     }
                 }
-                case "attack" -> {
-                    System.out.println("Choose a weapon to attack with: ");
-                    String weaponName = getStringInput();
-                    Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
-                    if (equippedWeapon != null && equippedWeapon.getShortName().equalsIgnoreCase(weaponName)) {
-                        System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
-                    } else {
-                        System.out.println("You don't have a weapon named " + weaponName + " equipped.");
-                    }
-                }
+                case "attack" -> attack();
                 case "help" -> help();
                 case "exit", "exit game" -> System.out.println("Exiting game.");
                 default -> System.out.println("Invalid choice.");
@@ -180,6 +171,17 @@ public class UserInterface {
         ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
         for (Item item : items) {
             System.out.println(item.getShortName());
+        }
+    }
+
+    public void attack() {
+        System.out.println("Choose a weapon to attack with: ");
+        String weaponName = getStringInput();
+        Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
+        if (equippedWeapon != null && equippedWeapon.getShortName().equalsIgnoreCase(weaponName)) {
+            System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
+        } else {
+            System.out.println("You don't have a weapon named " + weaponName + " equipped.");
         }
     }
 
