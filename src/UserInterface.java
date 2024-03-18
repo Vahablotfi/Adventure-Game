@@ -58,15 +58,10 @@ public class UserInterface {
                     String[] foodToEat = userChoice.split(" ");
                     eat(foodToEat[1]);
                 }
-                case "equip" -> {
-                    System.out.println("Enter name of the weapon to equip: ");
-                    String weaponName = getStringInput();
-                    Weapon equippedWeapon = newAdventure.equipWeapon(weaponName);
-                    if (equippedWeapon != null) {
-                        System.out.println("You equipped the: " + equippedWeapon.getShortName() + ".");
-                    } else {
-                        System.out.println("You don't have a weapon named: " + weaponName + " in your inventory.");
-                    }
+                //EQUIP:
+                case String s when s.startsWith("equip") -> {
+                    String[] WeaponToEquip = userChoice.split(" ");
+                    equip(WeaponToEquip[1]);
                 }
                 case "attack" -> attack();
                 case "help" -> help();
@@ -75,6 +70,7 @@ public class UserInterface {
             }
         }
     }
+
 
     public String getStringInput() {
         try {
@@ -143,29 +139,36 @@ public class UserInterface {
     }
 
 
-    public void eat(String foodName) {
+    public void help() {
+        System.out.println("Type: 'north', 'south', 'east' or 'west' to choose direction.");
+        System.out.println("Type: 'look' to look around the room you're currently in.");
+        System.out.println("Type: 'inventory' to see what's in your inventory");
+        System.out.println("Type: 'health' to see your health score");
+        System.out.println("Type: 'take' and the item you want to take from the room you're in");
+        System.out.println("Type: 'drop' and the item frem your inventory you want to drop");
+        System.out.println("Type: 'equip' and the item you want to equip");
+        System.out.println("Type: 'eat' and the food from the room or your inventory that you want to eat");
+        System.out.println("Type: 'attack' to attack the enemy");
+        System.out.println("Type: 'help' for help (like you just did)");
+        System.out.println("Type: 'exit' to exit the game.\n");
+    }
 
+    public void eat(String foodName) {
         Food choosenFood = (Food) newAdventure.playerEat(foodName);
         if (choosenFood != null) {
             System.out.println("You ate " + foodName);
         } else {
             System.out.println("Couldn't find this food try again!!");
         }
-
     }
 
-    public void help() {
-        System.out.println("Type: north, south, east or west to choose direction.");
-        System.out.println("Type: 'look' to look around the room you're currently in.");
-        System.out.println("Type: 'inventory' to see what's in your inventory");
-        System.out.println("Type: 'health' to see your health score");
-        System.out.println("Type: 'take' to choose an item to take from the room you're in");
-        System.out.println("Type: inventory to choose an item from your inventory to drop");
-        System.out.println("Type: 'equip'");
-        System.out.println("Type: 'eat' to eat something from the room your in");
-        System.out.println("Type: 'attack' to attack the enemy");
-        System.out.println("Type: 'help' for help (like you just did)");
-        System.out.println("Type: 'exit' to exit the game.\n");
+    public void equip(String weaponName) {
+        Weapon equippedWeapon = (Weapon) newAdventure.equipWeapon(weaponName);
+        if (equippedWeapon != null) {
+            System.out.println("You equipped the: " + weaponName + ".");
+        } else {
+            System.out.println("You don't have a weapon named: " + weaponName + " in your inventory.");
+        }
     }
 
 
