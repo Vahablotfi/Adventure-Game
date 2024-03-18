@@ -119,7 +119,7 @@ public class UserInterface {
         roomInfo.append("You are in: ").append(newAdventure.getCurrentRoom().getName());
         roomInfo.append("\n").append(newAdventure.getCurrentRoom().getDescription());
         System.out.println(roomInfo.toString());
-        printItemsInCurrentRoom();
+        showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
 
     }
 
@@ -165,14 +165,6 @@ public class UserInterface {
         System.out.println("Type: 'exit' to exit the game.\n");
     }
 
-
-    public void printItemsInCurrentRoom() {
-        System.out.println("Items in this room:");
-        ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
-        for (Item item : items) {
-            System.out.println(item.getShortName());
-        }
-    }
 
     public void attack() {
         System.out.println("Choose a weapon to attack with: ");
