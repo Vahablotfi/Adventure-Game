@@ -45,18 +45,6 @@ public class UserInterface {
                     String[] itemToDrop = userChoice.split(" ");
                     dropItem(itemToDrop[1]);
                 }
-//                case "drop" -> {
-//                    System.out.println("Inventory:");
-//                    showItemInArray(newAdventure.getGamePlayer().getInventoryArr());
-//                    System.out.print("Enter the item name to drop: ");
-//                    String itemToDrop = getStringInput();
-//                    Item droppedItem = newAdventure.dropItem(itemToDrop);
-//                    if (droppedItem != null) {
-//                        System.out.println("You dropped the " + droppedItem.getShortName() + ".");
-//                    } else {
-//                        System.out.println("You don't have anything like " + itemToDrop + " in your inventory.");
-//                    }
-//                }
                 //EAT:
                 case String s when s.startsWith("eat") -> {
                     String[] foodToEat = userChoice.split(" ");
