@@ -17,6 +17,7 @@ public class RangedWeapon extends Weapon{
         return damagePoints;
     }
 
+
     @Override
     void useWeapon() {
         ammunition--;

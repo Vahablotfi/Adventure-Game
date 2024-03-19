@@ -51,24 +51,24 @@ public class UserInterface {
                 }
 
                 //TAKE:
-                case String s when s.startsWith("take%") -> {
-                    String itemToTake = userChoice.substring(5);
-                    takeItem(itemToTake);
+                case String s when s.startsWith("take")-> {
+                    String itemToTake = userChoice.substring(4);
+                    takeItem(itemToTake.trim());
                 }
                 //DROP
-                case String s when s.startsWith("drop%") -> {
-                    String itemToDrop = userChoice.substring(5);
-                    dropItem(itemToDrop);
+                case String s when s.startsWith("drop") -> {
+                    String itemToDrop = userChoice.substring(4);
+                    dropItem(itemToDrop.trim());
                 }
                 //EAT:
-                case String s when s.startsWith("eat%") -> {
-                    String foodToEat = userChoice.substring(5);
-                    eat(foodToEat);
+                case String s when s.startsWith("eat") -> {
+                    String foodToEat = userChoice.substring(3);
+                    eat(foodToEat.trim());
                 }
                 //EQUIP:
-                case String s when s.startsWith("equip%") -> {
-                    String WeaponToEquip = userChoice.substring(6);
-                    equip(WeaponToEquip);
+                case String s when s.startsWith("equip") -> {
+                    String WeaponToEquip = userChoice.substring(5);
+                    equip(WeaponToEquip.trim());
                 }
                 case "health" -> health();
                 case "look" -> look();
@@ -171,11 +171,15 @@ public class UserInterface {
     }
 
     public void equip(String weaponName) {
-        Weapon equippedWeapon = newAdventure.equipWeapon(weaponName);
-        if (equippedWeapon != null) {
-            System.out.println("You equipped " + weaponName + ".");
-        } else {
+        Item equippedWeapon = newAdventure.equipWeapon(weaponName);
+        if (equippedWeapon == null) {
             System.out.println("You don't have a weapon named " + weaponName + " in your inventory.");
+
+        } else if ( !(equippedWeapon instanceof Weapon)) {
+            System.out.println("You can not equip " + weaponName);
+        }
+        else {
+            System.out.println("You equipped " + weaponName + ".");
         }
     }
 

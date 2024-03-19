@@ -7,6 +7,7 @@ public abstract class Weapon extends Item{
         this.damagePoints = damagePoints;
     }
 
+
     abstract int getRemainingUse();
 
     abstract int getDamagePoints();

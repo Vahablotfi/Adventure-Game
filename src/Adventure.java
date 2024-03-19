@@ -147,11 +147,13 @@ public class Adventure {
         return foodToHandel;
     }
 
-    public Weapon equipWeapon(String weaponName) {
+    public Item equipWeapon(String weaponName) {
         Item weaponToTake = findItemInArray(weaponName, inventory());
-        Weapon equippedWeapon = (weaponToTake instanceof Weapon) ? (Weapon) weaponToTake : null;
-        gamePlayer.setEquippedWeapon(equippedWeapon);
-        return equippedWeapon;
+        if (weaponToTake instanceof Weapon){
+            gamePlayer.setEquippedWeapon((Weapon) weaponToTake);
+        }
+
+        return weaponToTake;
 
     }
 
