@@ -166,12 +166,20 @@ public class UserInterface {
     public void equip(String weaponName) {
         Weapon equippedWeapon = newAdventure.equipWeapon(weaponName);
         if (equippedWeapon != null) {
-            System.out.println("You equipped the: " + weaponName + ".");
+            System.out.println("You equipped " + weaponName + ".");
         } else {
-            System.out.println("You don't have a weapon named: " + weaponName + " in your inventory.");
+            System.out.println("You don't have a weapon named " + weaponName + " in your inventory.");
         }
     }
 
+
+    public void printItemsInCurrentRoom() {
+        System.out.println("Items in this room:");
+        ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
+        for (Item item : items) {
+            System.out.println(item.getShortName());
+        }
+    }
 
     public void attack() {
         System.out.println("Choose a weapon to attack with: ");
