@@ -51,22 +51,22 @@ public class UserInterface {
                 }
 
                 //TAKE:
-                case String s when s.startsWith("take") -> {
+                case String s when s.startsWith("take%") -> {
                     String itemToTake = userChoice.substring(5);
                     takeItem(itemToTake);
                 }
                 //DROP
-                case String s when s.startsWith("drop") -> {
+                case String s when s.startsWith("drop%") -> {
                     String itemToDrop = userChoice.substring(5);
                     dropItem(itemToDrop);
                 }
                 //EAT:
-                case String s when s.startsWith("eat") -> {
+                case String s when s.startsWith("eat%") -> {
                     String foodToEat = userChoice.substring(5);
                     eat(foodToEat);
                 }
                 //EQUIP:
-                case String s when s.startsWith("equip") -> {
+                case String s when s.startsWith("equip%") -> {
                     String WeaponToEquip = userChoice.substring(6);
                     equip(WeaponToEquip);
                 }
