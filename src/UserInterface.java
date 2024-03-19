@@ -181,11 +181,11 @@ public class UserInterface {
     }
 
     public void eat(String foodName) {
-        Food choosenFood = (Food) newAdventure.playerEat(foodName);
+        Food choosenFood =  newAdventure.playerEat(foodName);
         if (choosenFood != null) {
             System.out.println("You ate " + foodName + ".");
         } else {
-            System.out.println("You don't have a food called" + foodName + " in your inventory.");
+            System.out.println("Could not find a food called " + foodName );
         }
     }
 

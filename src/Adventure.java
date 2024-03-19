@@ -125,23 +125,22 @@ public class Adventure {
         return null;
     }
 
-    public Item playerEat(String foodName) {
+    public Food playerEat(String foodName) {
         Item foodInInventory = findItemInArray(foodName, gamePlayer.getInventoryArr());
         Item foodInRoom = findItemInArray(foodName, currentRoom.getItemsInRoomArr());
-        Food foodToHandel;
+        Food foodToHandel = null;
 
-        if (foodInInventory == null && foodInRoom == null) {
-            return null;
-        } else if (foodInInventory != null) {
-            foodToHandel = (Food) foodInInventory;
+//        foodInInventory == null && foodInRoom == null
+        if (foodInRoom instanceof Food) {
+            foodToHandel =(Food) foodInRoom ;
+            gamePlayer.eatFood(foodToHandel);
+            currentRoom.removeFood((Food) foodInRoom);
+
+        } else if (foodInInventory instanceof Food) {
+            foodToHandel =  (Food) foodInInventory;
             gamePlayer.eatFood(foodToHandel);
             gamePlayer.removeItem(foodInInventory);
 
-        } else {
-
-            foodToHandel = (Food) foodInRoom;
-            gamePlayer.eatFood(foodToHandel);
-            currentRoom.removeFood((Food) foodInRoom);
         }
 
         return foodToHandel;
