@@ -44,6 +44,10 @@ public class UserInterface {
                 case "inventory" -> {
                     System.out.println("Inventory:");
                     showItemInArray(newAdventure.getGamePlayer().getInventoryArr());
+                    if (newAdventure.getGamePlayer().getEquippedWeapon()!=null){
+                        Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
+                        System.out.println("You are equipped with "+equippedWeapon.getShortName());
+                    }
                 }
 
                 //TAKE:
@@ -109,7 +113,7 @@ public class UserInterface {
     // Method To Print Out Items In An Array List
     public void showItemInArray(ArrayList<Item> playerItems) {
         if (playerItems.isEmpty()) {
-            System.out.println("Your inventory is empty.");
+            System.out.println("empty.");
         } else {
             for (Item item : playerItems) {
                 System.out.println(item.getShortName() + ": " + item.getLongName());
@@ -178,8 +182,6 @@ public class UserInterface {
 
 
     public void attack() {
-        //System.out.println("Choose a weapon to attack with: ");
-        //String weaponName = getStringInput();
         Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
         if (equippedWeapon == null ) {
             System.out.println("You don't have a weapon equipped.");
