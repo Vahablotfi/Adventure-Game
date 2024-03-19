@@ -1,8 +1,7 @@
 public class MeleeWeapon extends Weapon{
 
-
-    public MeleeWeapon(String shortName, String longName) {
-        super(shortName, longName);
+    public MeleeWeapon(String shortName, String longName, int damagePoints) {
+        super(shortName, longName, damagePoints);
     }
 
     @Override
@@ -12,6 +11,10 @@ public class MeleeWeapon extends Weapon{
     @Override
     int getRemainingUse() {
         return -1;
+    }
+
+    int getDamagePoints() {
+        return damagePoints;
     }
 
 }

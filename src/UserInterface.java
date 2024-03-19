@@ -189,7 +189,7 @@ public class UserInterface {
             System.out.println("You don't have any ammunition left.");
         }else{
             equippedWeapon.useWeapon();
-            System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
+            System.out.println("You attacked with " + equippedWeapon.getShortName() + " and did " + equippedWeapon.getDamagePoints() + " damage.");
         }
 
     }
