@@ -94,12 +94,12 @@ public class Map {
 
         room5.addItem(new Item("Treasure Chest", "A locked chest promising untold riches."));
         room5.addItem(new Item("Ring", "A golden ring with a sparkling gemstone."));
-        room5.addFood(new Food("Spiced wine", "An old looking wine bottle", -5));
+        room5.addFood(new Food("Wine", "An old looking wine bottle with spiced wine", -5));
         room5.addItem(new RangedWeapon("Magic Staff", "A staff imbued with powerful magic", 10, 3));
 
         room6.addItem(new Item("Map", "A tattered map with cryptic markings."));
-        room6.addItem(new Item("Silver Coin", "A shiny silver coin."));
-        room6.addFood(new Food("Venison stew", "A bowl of stew. Smells great", 20));
+        room6.addItem(new Item("Coin", "A shiny silver coin."));
+        room6.addFood(new Food("Stew", "A bowl of venison stew. Smells great", 20));
         room6.addItem(new RangedWeapon("Magic Bow", "A bow that shoots magical arrows", 10, 8));
 
         room7.addItem(new Item("Bedroll", "A makeshift bedroll for a weary traveler."));
