@@ -107,7 +107,7 @@ public class Adventure {
     public Item dropItem(String itemName) {
         Item item = findItemInArray(itemName, gamePlayer.getInventoryArr());
         if (item != null) {
-            if (item instanceof Weapon){
+            if (item instanceof Weapon) {
                 gamePlayer.setEquippedWeapon(null);
             }
             gamePlayer.removeItem(item);
@@ -132,12 +132,12 @@ public class Adventure {
         Food foodToHandel = null;
 
         if (foodInRoom instanceof Food) {
-            foodToHandel =(Food) foodInRoom ;
+            foodToHandel = (Food) foodInRoom;
             gamePlayer.eatFood(foodToHandel);
             currentRoom.removeFood((Food) foodInRoom);
 
         } else if (foodInInventory instanceof Food) {
-            foodToHandel =  (Food) foodInInventory;
+            foodToHandel = (Food) foodInInventory;
             gamePlayer.eatFood(foodToHandel);
             gamePlayer.removeItem(foodInInventory);
 
@@ -148,7 +148,7 @@ public class Adventure {
 
     public Item equipWeapon(String weaponName) {
         Item weaponToTake = findItemInArray(weaponName, inventory());
-        if (weaponToTake instanceof Weapon){
+        if (weaponToTake instanceof Weapon) {
             gamePlayer.setEquippedWeapon((Weapon) weaponToTake);
         }
 

@@ -12,12 +12,11 @@ public class Player {
     }
 
 
-
     public Weapon getEquippedWeapon() {
-        return  equippedWeapon;
+        return equippedWeapon;
     }
 
-    public void setEquippedWeapon(Weapon equippedWeapon){
+    public void setEquippedWeapon(Weapon equippedWeapon) {
         this.equippedWeapon = equippedWeapon;
     }
 
@@ -50,7 +49,6 @@ public class Player {
         int healthPoints = health + foodName.getHealthPoints();
         setHealth(healthPoints);
     }
-
 
 
 }
