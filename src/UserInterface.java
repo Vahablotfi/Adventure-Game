@@ -1,11 +1,20 @@
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     Adventure newAdventure = new Adventure();
+
+    // Array of directions
+    final String[] directions = new String[]{"go south", "south", "s",
+            "go north", "north", "n",
+            "go east", "east", "e",
+            "go west","west", "w"};
+
+    // Convert direction Array to a list
+    private List<String> directionsList = Arrays.asList(directions);
+
 
 
     public void playingGame() {
@@ -18,7 +27,8 @@ public class UserInterface {
             userChoice = getStringInput().toLowerCase();
 
             switch (userChoice) {
-                case "south", "s", "north", "n", "east", "e", "west", "w" -> {
+                //CHOOSE DIRECTION
+                case String s when directionsList.contains(s) -> {
                     if (newAdventure.moveAround(userChoice)) {
                         look();
                         if (newAdventure.getCurrentRoom().getVisited()) {
@@ -30,31 +40,34 @@ public class UserInterface {
                         System.out.println("You cannot go that direction.");
                     }
                 }
-                case "look" -> look();
+                //INVENTORY
                 case "inventory" -> {
                     System.out.println("Inventory:");
                     showItemInArray(newAdventure.getGamePlayer().getInventoryArr());
                 }
-                case "health" -> health();
+
                 //TAKE:
                 case String s when s.startsWith("take") -> {
-                    String[] itemToTake = userChoice.split(" ");
-                    takeItem(itemToTake[1]);
+                    String itemToTake = userChoice.substring(5);
+                    takeItem(itemToTake);
                 }
+                //DROP
                 case String s when s.startsWith("drop") -> {
-                    String[] itemToDrop = userChoice.split(" ");
-                    dropItem(itemToDrop[1]);
+                    String itemToDrop = userChoice.substring(5);
+                    dropItem(itemToDrop);
                 }
                 //EAT:
                 case String s when s.startsWith("eat") -> {
-                    String[] foodToEat = userChoice.split(" ");
-                    eat(foodToEat[1]);
+                    String foodToEat = userChoice.substring(5);
+                    eat(foodToEat);
                 }
                 //EQUIP:
                 case String s when s.startsWith("equip") -> {
-                    String[] WeaponToEquip = userChoice.split(" ");
-                    equip(WeaponToEquip[1]);
+                    String WeaponToEquip = userChoice.substring(6);
+                    equip(WeaponToEquip);
                 }
+                case "health" -> health();
+                case "look" -> look();
                 case "attack" -> attack();
                 case "help" -> help();
                 case "exit", "exit game" -> System.out.println("Exiting game.");
@@ -64,20 +77,7 @@ public class UserInterface {
     }
 
 
-    public String getStringInput() {
-        try {
-            String inputString = scanner.nextLine().trim();
-            if (inputString.isEmpty()) {
-                System.out.println("Invalid input. Please try again.");
-                return getStringInput();
-            }
-            return inputString;
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please try again.");
-            scanner.nextLine();
-            return getStringInput();
-        }
-    }
+
 
     public void menu() {
         System.out.println();
@@ -105,6 +105,7 @@ public class UserInterface {
 
     }
 
+    // Method To Print Out Items In An Array List
     public void showItemInArray(ArrayList<Item> playerItems) {
         if (playerItems.isEmpty()) {
             System.out.println("Empty");
@@ -116,11 +117,11 @@ public class UserInterface {
     }
 
     public void takeItem(String itemToTake) {
-        Item choosenItem = (Item) newAdventure.takeItem(itemToTake);
+        Item choosenItem =  newAdventure.takeItem(itemToTake);
         if (choosenItem != null) {
             System.out.println("You took the " + choosenItem.getShortName() + ".");
         } else {
-            System.out.println("You don't have anything like '" + itemToTake + "' in you inventory");
+            System.out.println("Can not find " + itemToTake );
         }
     }
 
@@ -133,6 +134,7 @@ public class UserInterface {
         }
     }
 
+    // Method to check Player's remaining Health
     public void health() {
         int playerHealth = newAdventure.getGamePlayer().getHealth();
         System.out.println("Your current health: " + playerHealth);
@@ -173,6 +175,7 @@ public class UserInterface {
     }
 
 
+
     public void attack() {
         System.out.println("Choose a weapon to attack with: ");
         String weaponName = getStringInput();
@@ -188,6 +191,22 @@ public class UserInterface {
             System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
         }
 
+    }
+
+    // Method to get String Input From User
+    public String getStringInput() {
+        try {
+            String inputString = scanner.nextLine().trim().toLowerCase();
+            if (inputString.isEmpty()) {
+                System.out.println("Invalid input. Please try again.");
+                return getStringInput();
+            }
+            return inputString;
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please try again.");
+            scanner.nextLine();
+            return getStringInput();
+        }
     }
 
 }
