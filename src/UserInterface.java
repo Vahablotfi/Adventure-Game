@@ -182,7 +182,7 @@ public class UserInterface {
     }
 
     public void attack() {
-        System.out.println("Choose a weapon to attack with: ");
+        //System.out.println("Choose a weapon to attack with: ");
         //String weaponName = getStringInput();
         Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
         if (equippedWeapon == null ) {
