@@ -77,20 +77,7 @@ public class UserInterface {
     }
 
 
-    public String getStringInput() {
-        try {
-            String inputString = scanner.nextLine().trim();
-            if (inputString.isEmpty()) {
-                System.out.println("That didn't work. Try again.");
-                return getStringInput();
-            }
-            return inputString;
-        } catch (InputMismatchException e) {
-            System.out.println("That didn't work. Try again.");
-            scanner.nextLine();
-            return getStringInput();
-        }
-    }
+
 
 
     public void menu() {
@@ -212,12 +199,12 @@ public class UserInterface {
         try {
             String inputString = scanner.nextLine().trim().toLowerCase();
             if (inputString.isEmpty()) {
-                System.out.println("Invalid input. Please try again.");
+                System.out.println("That didn't work. Try again.");
                 return getStringInput();
             }
             return inputString;
         } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please try again.");
+            System.out.println("That didn't work. Try again.");
             scanner.nextLine();
             return getStringInput();
         }
