@@ -148,17 +148,17 @@ public class UserInterface {
 
 
     public void help() {
-        System.out.println("Type: 'north', 'south', 'east' or 'west' to choose direction.");
-        System.out.println("Type: 'look' to look around the room you're currently in.");
-        System.out.println("Type: 'inventory' to see what's in your inventory");
-        System.out.println("Type: 'health' to see your health score");
-        System.out.println("Type: 'take' and the item you want to take from the room you're in");
-        System.out.println("Type: 'drop' and the item frem your inventory you want to drop");
-        System.out.println("Type: 'equip' and the item you want to equip");
-        System.out.println("Type: 'eat' and the food from the room or your inventory that you want to eat");
-        System.out.println("Type: 'attack' to attack the enemy");
-        System.out.println("Type: 'help' for help (like you just did)");
-        System.out.println("Type: 'exit' to exit the game.\n");
+        System.out.println("Type 'north', 'south', 'east' or 'west' to choose direction.");
+        System.out.println("Type 'look' to look around the room you're currently in.");
+        System.out.println("Type 'inventory' to see what's in your inventory");
+        System.out.println("Type 'health' to see your health score");
+        System.out.println("Type 'take' and the item you want to take from the room you're in");
+        System.out.println("Type 'drop' and the item from your inventory you want to drop");
+        System.out.println("Type 'equip' and the item you want to equip");
+        System.out.println("Type 'eat' and the food from the room or your inventory that you want to eat");
+        System.out.println("Type 'attack' to attack the enemy");
+        System.out.println("Type 'help' for help (like you just did)");
+        System.out.println("Type 'exit' to exit the game.\n");
     }
 
     public void eat(String foodName) {
