@@ -164,7 +164,7 @@ public class UserInterface {
     }
 
     public void equip(String weaponName) {
-        Weapon equippedWeapon = (Weapon) newAdventure.equipWeapon(weaponName);
+        Weapon equippedWeapon = newAdventure.equipWeapon(weaponName);
         if (equippedWeapon != null) {
             System.out.println("You equipped the: " + weaponName + ".");
         } else {
@@ -177,15 +177,21 @@ public class UserInterface {
         System.out.println("Choose a weapon to attack with: ");
         String weaponName = getStringInput();
         Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
-        if (equippedWeapon != null && equippedWeapon.getShortName().equalsIgnoreCase(weaponName)) {
+        if (equippedWeapon == null ) {
+            System.out.println("You don't have a weapon equipped.");
+        } else if (!equippedWeapon.getShortName().equalsIgnoreCase(weaponName)) {
+            System.out.println("You don't a " +weaponName+ "in your inventory ");
+        } else if(equippedWeapon.getRemainingUse()== 0 ) {
+            System.out.println("You don't have ammunition");
+        }else{
+            equippedWeapon.useWeapon();
             System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
-        } else {
-            System.out.println("You don't have a weapon named " + weaponName + " equipped.");
         }
+
     }
 
-
 }
+
 
 
 
