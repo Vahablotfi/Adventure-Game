@@ -22,12 +22,12 @@ public class UserInterface {
                     if (newAdventure.moveAround(userChoice)) {
                         look();
                         if (newAdventure.getCurrentRoom().getVisited()) {
-                            System.out.println("Warning: You have been here before");
+                            System.out.println("This place feel awfully familiar.");
                         } else {
                             newAdventure.markVisitedRoom();
                         }
                     } else {
-                        System.out.println("You cannot go that direction.");
+                        System.out.println("You can't go that way.");
                     }
                 }
                 case "look" -> look();
@@ -58,7 +58,7 @@ public class UserInterface {
                 case "attack" -> attack();
                 case "help" -> help();
                 case "exit", "exit game" -> System.out.println("Exiting game.");
-                default -> System.out.println("Invalid choice.");
+                default -> System.out.println("That doesn't work.");
             }
         }
     }
@@ -68,12 +68,12 @@ public class UserInterface {
         try {
             String inputString = scanner.nextLine().trim();
             if (inputString.isEmpty()) {
-                System.out.println("Invalid input. Please try again.");
+                System.out.println("That didn't work. Try again.");
                 return getStringInput();
             }
             return inputString;
         } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please try again.");
+            System.out.println("That didn't work. Try again.");
             scanner.nextLine();
             return getStringInput();
         }
@@ -107,10 +107,10 @@ public class UserInterface {
 
     public void showItemInArray(ArrayList<Item> playerItems) {
         if (playerItems.isEmpty()) {
-            System.out.println("Empty");
+            System.out.println("Your inventory is empty.");
         } else {
             for (Item item : playerItems) {
-                System.out.println(" " + item.getShortName() + ": " + item.getLongName());
+                System.out.println(item.getShortName() + ": " + item.getLongName());
             }
         }
     }
@@ -135,7 +135,7 @@ public class UserInterface {
 
     public void health() {
         int playerHealth = newAdventure.getGamePlayer().getHealth();
-        System.out.println("Your current health: " + playerHealth);
+        System.out.println("Your current health is " + playerHealth);
 
     }
 
@@ -159,7 +159,7 @@ public class UserInterface {
         if (choosenFood != null) {
             System.out.println("You ate " + foodName);
         } else {
-            System.out.println("Couldn't find this food try again!!");
+            System.out.println("You don't have " + foodName + " in your inventory.");
         }
     }
 
@@ -174,7 +174,7 @@ public class UserInterface {
 
 
     public void printItemsInCurrentRoom() {
-        System.out.println("Items in this room:");
+        System.out.println("Items in this room: ");
         ArrayList<Item> items = newAdventure.getCurrentRoom().getItemsInRoomArr();
         for (Item item : items) {
             System.out.println(item.getShortName());
@@ -188,9 +188,9 @@ public class UserInterface {
         if (equippedWeapon == null ) {
             System.out.println("You don't have a weapon equipped.");
         } else if (!equippedWeapon.getShortName().equalsIgnoreCase(equippedWeapon.getShortName())) {
-            System.out.println("You don't a " +equippedWeapon+ "in your inventory ");
+            System.out.println("You don't a " +equippedWeapon+ "in your inventory.");
         } else if(equippedWeapon.getRemainingUse()== 0 ) {
-            System.out.println("You don't have ammunition");
+            System.out.println("You don't have any ammunition left.");
         }else{
             equippedWeapon.useWeapon();
             System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
