@@ -107,12 +107,13 @@ public class Adventure {
     public Item dropItem(String itemName) {
         Item item = findItemInArray(itemName, gamePlayer.getInventoryArr());
         if (item != null) {
+            if (item instanceof Weapon){
+                gamePlayer.setEquippedWeapon(null);
+            }
             gamePlayer.removeItem(item);
             currentRoom.addItem(item);
-            return item;
-        } else {
-            return null;
         }
+        return item;
     }
 
 
@@ -130,7 +131,6 @@ public class Adventure {
         Item foodInRoom = findItemInArray(foodName, currentRoom.getItemsInRoomArr());
         Food foodToHandel = null;
 
-//        foodInInventory == null && foodInRoom == null
         if (foodInRoom instanceof Food) {
             foodToHandel =(Food) foodInRoom ;
             gamePlayer.eatFood(foodToHandel);
