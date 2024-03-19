@@ -32,12 +32,12 @@ public class UserInterface {
                     if (newAdventure.moveAround(userChoice)) {
                         look();
                         if (newAdventure.getCurrentRoom().getVisited()) {
-                            System.out.println("Warning: You have been here before");
+                            System.out.println("This place feel awfully familiar.");
                         } else {
                             newAdventure.markVisitedRoom();
                         }
                     } else {
-                        System.out.println("You cannot go that direction.");
+                        System.out.println("You can't go that way.");
                     }
                 }
                 //INVENTORY
@@ -71,12 +71,26 @@ public class UserInterface {
                 case "attack" -> attack();
                 case "help" -> help();
                 case "exit", "exit game" -> System.out.println("Exiting game.");
-                default -> System.out.println("Invalid choice.");
+                default -> System.out.println("That doesn't work.");
             }
         }
     }
 
 
+    public String getStringInput() {
+        try {
+            String inputString = scanner.nextLine().trim();
+            if (inputString.isEmpty()) {
+                System.out.println("That didn't work. Try again.");
+                return getStringInput();
+            }
+            return inputString;
+        } catch (InputMismatchException e) {
+            System.out.println("That didn't work. Try again.");
+            scanner.nextLine();
+            return getStringInput();
+        }
+    }
 
 
     public void menu() {
@@ -108,10 +122,10 @@ public class UserInterface {
     // Method To Print Out Items In An Array List
     public void showItemInArray(ArrayList<Item> playerItems) {
         if (playerItems.isEmpty()) {
-            System.out.println("Empty");
+            System.out.println("Your inventory is empty.");
         } else {
             for (Item item : playerItems) {
-                System.out.println(" " + item.getShortName() + ": " + item.getLongName());
+                System.out.println(item.getShortName() + ": " + item.getLongName());
             }
         }
     }
@@ -137,7 +151,7 @@ public class UserInterface {
     // Method to check Player's remaining Health
     public void health() {
         int playerHealth = newAdventure.getGamePlayer().getHealth();
-        System.out.println("Your current health: " + playerHealth);
+        System.out.println("Your current health is " + playerHealth);
 
     }
 
@@ -161,31 +175,31 @@ public class UserInterface {
         if (choosenFood != null) {
             System.out.println("You ate " + foodName);
         } else {
-            System.out.println("Couldn't find this food try again!!");
+            System.out.println("You don't have " + foodName + " in your inventory.");
         }
     }
 
     public void equip(String weaponName) {
         Weapon equippedWeapon = newAdventure.equipWeapon(weaponName);
         if (equippedWeapon != null) {
-            System.out.println("You equipped the: " + weaponName + ".");
+            System.out.println("You equipped " + weaponName + ".");
         } else {
-            System.out.println("You don't have a weapon named: " + weaponName + " in your inventory.");
+            System.out.println("You don't have a weapon named " + weaponName + " in your inventory.");
         }
     }
 
 
 
     public void attack() {
-        System.out.println("Choose a weapon to attack with: ");
-        String weaponName = getStringInput();
+        //System.out.println("Choose a weapon to attack with: ");
+        //String weaponName = getStringInput();
         Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
         if (equippedWeapon == null ) {
             System.out.println("You don't have a weapon equipped.");
-        } else if (!equippedWeapon.getShortName().equalsIgnoreCase(weaponName)) {
-            System.out.println("You don't a " +weaponName+ "in your inventory ");
+        } else if (!equippedWeapon.getShortName().equalsIgnoreCase(equippedWeapon.getShortName())) {
+            System.out.println("You don't a " +equippedWeapon+ "in your inventory.");
         } else if(equippedWeapon.getRemainingUse()== 0 ) {
-            System.out.println("You don't have ammunition");
+            System.out.println("You don't have any ammunition left.");
         }else{
             equippedWeapon.useWeapon();
             System.out.println("You attacked with " + equippedWeapon.getShortName() + ".");
