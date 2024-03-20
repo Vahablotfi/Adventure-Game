@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -10,7 +9,7 @@ public class UserInterface {
     final String[] directions = new String[]{"go south", "south", "s",
             "go north", "north", "n",
             "go east", "east", "e",
-            "go west","west", "w"};
+            "go west", "west", "w"};
 
     // Convert direction Array to a list
     private List<String> directionsList = Arrays.asList(directions);
@@ -44,9 +43,11 @@ public class UserInterface {
                 //EQUIP:
                 case String s when s.startsWith("equip") -> equip(userChoice);
 
+                //ATTACK
+                case String s when s.startsWith("attack") -> attack(userChoice);
+
                 case "health" -> health();
                 case "look" -> look();
-                case "attack" -> attack();
                 case "help" -> help();
                 case "exit", "exit game" -> System.out.println("Exiting game.");
                 default -> System.out.println("That doesn't work.");
@@ -154,46 +155,22 @@ public class UserInterface {
 
     }
 
-    public void attack() {
-        Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
-        if (equippedWeapon == null) {
-            System.out.println("You don't have a weapon equipped.");
-        } else if (equippedWeapon.getRemainingUse() == 0) {
-            System.out.println("You don't have any ammunition left.");
-        } else {
-            equippedWeapon.useWeapon();
-            System.out.println("You attacked with "
-                    + equippedWeapon.getShortName()
-                    + " and did " + equippedWeapon.getDamagePoints()
-                    + " damage.");
-                }
-                //EQUIP:
-                case String s when s.startsWith("equip") -> {
-                    if (userChoice.length() >= 6) {
-                        String WeaponToEquip = userChoice.substring(5);
-                        equip(WeaponToEquip.trim());
-                    } else {
-                        System.out.println("You have to write a weapon to equip.");
-                    }
-                }
-                case "health" -> health();
-                case "look" -> look();
-                //case "attack" -> attack();
-                case String s when s.startsWith("attack")-> {
-                    if(userChoice.length()>=7)    {
-                        String attack = userChoice.substring(7) ;
-                        attack(attack.trim());
-                    }  else {
-                        System.out.println("Can't");
-                    }
-                }
-                case "help" -> help();
-                case "exit", "exit game" -> System.out.println("Exiting game.");
-                default -> System.out.println("That doesn't work.");
-            }
-        }
+    // WILL DELETE THIS LATER
+//    public void attack() {
+//        Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
+//        if (equippedWeapon == null) {
+//            System.out.println("You don't have a weapon equipped.");
+//        } else if (equippedWeapon.getRemainingUse() == 0) {
+//            System.out.println("You don't have any ammunition left.");
+//        } else {
+//            equippedWeapon.useWeapon();
+//            System.out.println("You attacked with "
+//                    + equippedWeapon.getShortName()
+//                    + " and did " + equippedWeapon.getDamagePoints()
+//                    + " damage.");
+//        }
+//    }
 
-    }
 
     // Method to check Player's remaining Health
     public void health() {
@@ -209,6 +186,11 @@ public class UserInterface {
         roomInfo.append("\n").append(newAdventure.getCurrentRoom().getDescription());
         System.out.println(roomInfo);
         showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
+        if (!newAdventure.getCurrentRoom().getEnemiesInRoomArr().isEmpty()) {
+            for (Enemy enemy : newAdventure.getCurrentRoom().getEnemiesInRoomArr()) {
+                System.out.println(enemy.getName());
+            }
+        }
 
     }
 
@@ -229,16 +211,6 @@ public class UserInterface {
     }
 
 
-    public void look() {
-        StringBuilder roomInfo = new StringBuilder();
-        roomInfo.append("You are in: ").append(newAdventure.getCurrentRoom().getName());
-        roomInfo.append("\n").append(newAdventure.getCurrentRoom().getDescription());
-        System.out.println(roomInfo.toString());
-        showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
-        showEnemiesInArray(newAdventure.getCurrentRoom().getEnemiesInRoomArr());
-
-    }
-
     // Method To Print Out Items In An Array List
     public void showItemInArray(ArrayList<Item> playerItems) {
         if (playerItems.isEmpty()) {
@@ -248,41 +220,6 @@ public class UserInterface {
                 System.out.println(item.getShortName() + ": " + item.getLongName());
             }
         }
-    }
-
-    public void showEnemiesInArray(ArrayList<Enemy> enemies) {
-        if (enemies.isEmpty()) {
-            System.out.println("No enemies");
-        } else {
-            for (Enemy enemy : enemies) {
-                System.out.println(enemy.getName() + ": " + enemy.getDescription());
-            }
-        }
-    }
-
-    public void takeItem(String itemToTake) {
-        Item choosenItem = newAdventure.takeItem(itemToTake);
-        if (choosenItem != null) {
-            System.out.println("You took the " + choosenItem.getShortName() + ".");
-        } else {
-            System.out.println("Can not find " + itemToTake + ".");
-        }
-    }
-
-    public void dropItem(String itemToDrop) {
-        Item droppedItem = newAdventure.dropItem(itemToDrop);
-        if (droppedItem != null) {
-            System.out.println("You dropped " + droppedItem.getShortName() + ".");
-        } else {
-            System.out.println("You don't have anything like '" + itemToDrop + "' in you inventory.");
-        }
-    }
-
-    // Method to check Player's remaining Health
-    public void health() {
-        int playerHealth = newAdventure.getGamePlayer().getHealth();
-        System.out.println("Your current health is " + playerHealth + ".");
-
     }
 
 
@@ -300,43 +237,17 @@ public class UserInterface {
         System.out.println("Type 'exit' to exit the game.\n");
     }
 
-    public void eat(String foodName) {
-        Food choosenFood = newAdventure.playerEat(foodName);
-        if (choosenFood != null) {
-            System.out.println("You ate " + foodName + ".");
-        } else {
-            System.out.println("Could not find a food called " + foodName);
-        }
-    }
 
-    public void equip(String weaponName) {
-        Item equippedWeapon = newAdventure.equipWeapon(weaponName);
-        if (equippedWeapon == null) {
-            System.out.println("You don't have a weapon named " + weaponName + " in your inventory.");
+    public void attack(String wantedEnemy) {
+        String enemyToFight = wantedEnemy.substring(6).trim();
+        // should add a length check here
 
-        } else if (!(equippedWeapon instanceof Weapon)) {
-            System.out.println("You can not equip " + weaponName + ".");
-        } else {
-            System.out.println("You equipped " + weaponName + ".");
-        }
-    }
-
-
-    // Method To Print Out Items In An Array List
-    public void showItemInArray(ArrayList<Item> playerItems) {
-        if (playerItems.isEmpty()) {
-            System.out.println("empty");
-        } else {
-            for (Item item : playerItems) {
-                System.out.println(item.getShortName() + ": " + item.getLongName());
-            }
-    public void attack(String enemyName) {
         ArrayList<Enemy> foundEnemies = newAdventure.getCurrentRoom().getEnemiesInRoomArr();
         if (foundEnemies.isEmpty()) {
             System.out.println("There are no enemies to attack");
         } else {
             for (Enemy enemy : foundEnemies) {
-                if (enemy.getName().equalsIgnoreCase(enemyName)) {
+                if (enemy.getName().equalsIgnoreCase(enemyToFight)) {
                     Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
                     if (equippedWeapon == null) {
                         System.out.println("You don't have a weapon equipped.");
@@ -345,8 +256,10 @@ public class UserInterface {
                     } else {
                         equippedWeapon.useWeapon();
                         int enemyNewHealth = (enemy.getEnemyHealthPoints()) - equippedWeapon.damagePoints;
+                        enemy.setEnemyHealthPoints(enemyNewHealth);
                         System.out.println("You attacked with " + equippedWeapon.getShortName() + " and did " +
-                                equippedWeapon.getDamagePoints() + " damage on " + enemyName + " and " + enemyName + " now has " + enemyNewHealth + " hp left" );
+                                equippedWeapon.getDamagePoints() + " damage on " + enemyToFight + " and "
+                                + enemyToFight + " now has " + enemyNewHealth + " hp left");
 
 
                     }
@@ -357,23 +270,6 @@ public class UserInterface {
         }
 
 
-    }
-
-    public void enemyAttack() {
-        Weapon enemyWeapon = newAdventure.getEnemy().getWeapon();
-        enemyWeapon.useWeapon();
-        System.out.println(enemyWeapon.getDamagePoints());
-
-    }
-
-
-    public void enemyHit() {
-        Weapon playerEquippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
-        if (newAdventure.getCurrentRoom().getEnemiesInRoomArr().isEmpty()) {
-            System.out.println("Nothing to attack");
-        } else {
-
-        }
     }
 
 
