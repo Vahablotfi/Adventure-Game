@@ -76,6 +76,7 @@ public class Map {
         room1.addItem(new RangedWeapon("Bow", "Sharp and poisened bow", 10, 10));
         room1.addItem(new MeleeWeapon("Butter Knife", "Dull butter knife", 10));
 
+
         room2.addItem(new Item("Candle", "A partially burned candle emitting a faint light."));
         room2.addItem(new Item("Scroll", "An old scroll with magical inscriptions."));
         room2.addItem(new Item("Lantern", "A small lantern that lights up dark places."));
@@ -91,6 +92,7 @@ public class Map {
         room4.addItem(new Item("Shield", "A wooden shield."));
         room4.addFood(new Food("Milk", "A fresh jug of milk", 5));
         room4.addItem(new MeleeWeapon("Dagger", "A small, sharp dagger.", 10));
+        room4.addEnemy(new Enemy("Falmer", "A small blind elf", 20,new MeleeWeapon("Dagger", "silver dagger",5)));
 
         room5.addItem(new Item("Treasure Chest", "A locked chest promising untold riches."));
         room5.addItem(new Item("Ring", "A golden ring with a sparkling gemstone."));

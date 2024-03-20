@@ -4,6 +4,7 @@ public class Adventure {
     private Map gameMap;
     private Player gamePlayer;
     private Room currentRoom;
+    private Enemy enemy;
 
 
     public Adventure() {
@@ -12,6 +13,9 @@ public class Adventure {
         currentRoom = gameMap.getRoom1();
         currentRoom.setVisited();
         gamePlayer.setHealth(100);
+    }
+    public Enemy getEnemy(){
+        return enemy;
     }
 
 
@@ -43,6 +47,7 @@ public class Adventure {
     public ArrayList<Item> inventory() {
         return gamePlayer.getInventoryArr();
     }
+
 
 
     public boolean moveAround(String direction) {

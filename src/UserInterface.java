@@ -126,6 +126,7 @@ public class UserInterface {
         roomInfo.append("\n").append(newAdventure.getCurrentRoom().getDescription());
         System.out.println(roomInfo.toString());
         showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
+        showEnemiesInArray(newAdventure.getCurrentRoom().getEnemiesInRoomArr());
 
     }
 
@@ -136,6 +137,15 @@ public class UserInterface {
         } else {
             for (Item item : playerItems) {
                 System.out.println(item.getShortName() + ": " + item.getLongName());
+            }
+        }
+    }
+    public void showEnemiesInArray(ArrayList<Enemy> enemies){
+        if(enemies.isEmpty()){
+            System.out.println("No enemies");
+        } else{
+            for(Enemy enemy : enemies){
+                System.out.println(enemy.getName() + ": " + enemy.getDescription());
             }
         }
     }
@@ -213,9 +223,16 @@ public class UserInterface {
         }else{
             equippedWeapon.useWeapon();
             System.out.println("You attacked with " + equippedWeapon.getShortName() + " and did " + equippedWeapon.getDamagePoints() + " damage.");
+
         }
 
     }
+//    public void enemyAttack(){
+//        Weapon enemyWeapon = newAdventure.getEnemy().getWeapon();
+//        enemyWeapon.useWeapon();
+//        System.out.println(enemyWeapon.getDamagePoints());
+//
+//    }
 
     // Method to get String Input From User
     public String getStringInput() {
