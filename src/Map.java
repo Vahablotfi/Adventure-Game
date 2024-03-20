@@ -70,17 +70,17 @@ public class Map {
 
         // Add items to rooms
         room1.addItem(new Item("Book", "A dusty old book with strange symbols."));
-        room1.addItem(new Item("Snake", "A glistnening green cobra, with teeth like daggers"));
-        room1.addItem(new Item("Shield", "A wide gold shield with special capabilites"));
+        room1.addItem(new Item("Snake", "A glistening green cobra, with teeth like daggers"));
+        room1.addItem(new Item("Shield", "A wide gold shield with special capabilities"));
         room1.addFood(new Food("Apple", "A pink apple with a strange glow to it", 10));
-        room1.addItem(new RangedWeapon("Bow", "Sharp and poisened bow", 10, 10));
+        room1.addItem(new RangedWeapon("Bow", "Sharp and poisoned bow", 10, 10));
         room1.addItem(new MeleeWeapon("Butter Knife", "Dull butter knife", 10));
 
 
         room2.addItem(new Item("Candle", "A partially burned candle emitting a faint light."));
         room2.addItem(new Item("Scroll", "An old scroll with magical inscriptions."));
         room2.addItem(new Item("Lantern", "A small lantern that lights up dark places."));
-        room2.addFood(new Food("Sweetroll", "A pastry with icing on the top", 15));
+        room2.addFood(new Food("Sweet roll", "A pastry with icing on the top", 15));
         room2.addItem(new MeleeWeapon("Sword", "Gold useless sword", 10));
 
         room3.addItem(new Item("Key", "A rusty key that may unlock something."));
