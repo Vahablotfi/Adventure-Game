@@ -105,6 +105,7 @@ public class Adventure {
         }
     }
 
+
     public void markVisitedRoom() {
         currentRoom.setVisited();
     }
@@ -130,6 +131,13 @@ public class Adventure {
         }
         return null;
     }
+//    public Enemy findEnemyInArray(){
+//        for(Enemy enemy : enemy){
+//            if(enemy.getName().equalsIgnoreCase(enemyName));
+//            return enemy;
+//        }
+//        return null;
+//    }
 
     public Food playerEat(String foodName) {
         Item foodInInventory = findItemInArray(foodName, gamePlayer.getInventoryArr());

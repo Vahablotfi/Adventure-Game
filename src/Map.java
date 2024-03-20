@@ -87,6 +87,7 @@ public class Map {
         room3.addItem(new Item("Sword", "A rusty old sword."));
         room3.addFood(new Food("Skooma", "A potion in a purple bottle with a pipe on top", -10));
         room3.addItem(new RangedWeapon("Crossbow", "A powerful crossbow", 10, 5));
+        room3.addEnemy(new Enemy("Troll","Large green troll", 30, new MeleeWeapon("knife","Furry knife",10)));
 
         room4.addItem(new Item("Potion", "A mysterious potion with a swirling liquid."));
         room4.addItem(new Item("Shield", "A wooden shield."));
@@ -98,11 +99,13 @@ public class Map {
         room5.addItem(new Item("Ring", "A golden ring with a sparkling gemstone."));
         room5.addFood(new Food("Wine", "An old looking wine bottle with spiced wine", -5));
         room5.addItem(new RangedWeapon("Magic Staff", "A staff imbued with powerful magic", 10, 3));
+        room5.addEnemy(new Enemy("Boss", "Big boss", 120, new MeleeWeapon("Skullcleaver","A big two bladed axe of dark metal", 15)));
 
         room6.addItem(new Item("Map", "A tattered map with cryptic markings."));
         room6.addItem(new Item("Coin", "A shiny silver coin."));
         room6.addFood(new Food("Stew", "A bowl of venison stew. Smells great", 20));
         room6.addItem(new RangedWeapon("Magic Bow", "A bow that shoots magical arrows", 10, 8));
+        room6.addEnemy(new Enemy("Hunter", "An old retired hunter", 2,new RangedWeapon("Gun","Rusty Gun", 10, 3)));
 
         room7.addItem(new Item("Bedroll", "A makeshift bedroll for a weary traveler."));
         room7.addItem(new Item("Chest", "A wooden chest with a lock."));
