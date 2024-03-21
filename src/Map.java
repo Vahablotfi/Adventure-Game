@@ -92,7 +92,7 @@ public class Map {
         room4.addItem(new Item("Potion", "A mysterious potion with a swirling liquid."));
         room4.addItem(new Item("Shield", "A wooden shield."));
         room4.addFood(new Food("Milk", "A fresh jug of milk", 5));
-        room4.addItem(new MeleeWeapon("Dagger", "A small, sharp dagger.", 10));
+        room4.addItem(new MeleeWeapon("Spoon", "A big, wooden spoon.", 20));
         room4.addEnemy(new Enemy("Falmer", "A small blind elf", 20,new MeleeWeapon("Dagger", "silver dagger",5)));
 
         room5.addItem(new Item("Treasure Chest", "A locked chest promising untold riches."));

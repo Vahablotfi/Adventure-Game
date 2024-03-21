@@ -245,7 +245,7 @@ public class UserInterface {
                                 equippedWeapon.getDamagePoints() + " damage on " + enemyToFight + " and "
                                 + enemyToFight + " now has " + enemyNewHealth + " hp left");
                         if (enemyNewHealth <= 0) {
-                            enemyDie();
+                            enemyDie(enemy);
                         } else {
                             int playerNewHealth = (newAdventure.getGamePlayer().getHealth()) -
                                     (enemy.getWeapon().damagePoints);
@@ -255,14 +255,18 @@ public class UserInterface {
                         }
 
                     }
+                    break;
 
                 }
             }
         }
     }
 
-    public void enemyDie() {
+    public void enemyDie(Enemy enemy) {
+        Weapon weaponToDrop = enemy.getWeapon();
+        newAdventure.getCurrentRoom().addItem(weaponToDrop);
         System.out.println("Enemy is dead");
+        newAdventure.getCurrentRoom().removeEnemy(enemy);
     }
 
 
