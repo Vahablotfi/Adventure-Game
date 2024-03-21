@@ -11,7 +11,7 @@ public class Map {
     private Room room9;
 
     public Map() {
-        room1 = new Room("Room 1", "The room is brightly lit with red and black stains covering the walls. Two doors");
+        room1 = new Room("Room 1", "This room is warm and bright. There's blood in the corner. Is it mine?. Two doors");
         room2 = new Room("Room 2", "You're in a dark corridor with a very distinct floor pattern. Two doors");
         room3 = new Room("Room 3", "The room is dark with puddles on the floor. A pipe is leaking. Two doors");
         room4 = new Room("Room 4", "This is a very small room. There's a noise from the eastern wall. Two doors");
