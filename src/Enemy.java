@@ -1,14 +1,24 @@
+import java.util.ArrayList;
+
 public class Enemy {
     private String name;
     private String description;
     private int enemyHealthPoints;
     private Weapon weapon;
+    private ArrayList<Enemy> enemyInventoryArr;
 
     public Enemy(String name, String description, int enemyHealthPoint, Weapon weapon){
         this.name = name;
         this.description = description;
         this.enemyHealthPoints = enemyHealthPoint;
         this.weapon = weapon;
+    }
+    public void removeEnemyWeapon(Weapon weapon){
+        enemyInventoryArr.remove(weapon);
+
+    }
+    public Enemy(){
+        this.enemyInventoryArr = new ArrayList<>();
     }
 
     public String getName() {

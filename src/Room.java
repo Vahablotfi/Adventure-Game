@@ -24,10 +24,6 @@ public class Room {
     public void removeEnemy(Enemy enemy){
         enemiesInRoomArr.remove(enemy);
     }
-    public void removeEnemyWeapon(Weapon weapon){
-        enemiesInRoomArr.remove(weapon);
-
-    }
 
     public void addItem(Item item) {
         itemsInRoomArr.add(item);
