@@ -1,4 +1,5 @@
 public class Food extends Item {
+
     private int healthPoints;
 
     public Food(String shortName, String longName, int healthPoints) {
@@ -8,10 +9,6 @@ public class Food extends Item {
 
     public int getHealthPoints() {
         return healthPoints;
-    }
-
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
     }
 
 }
