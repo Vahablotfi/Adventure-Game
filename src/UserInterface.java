@@ -155,23 +155,6 @@ public class UserInterface {
 
     }
 
-    // WILL DELETE THIS LATER
-//    public void attack() {
-//        Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
-//        if (equippedWeapon == null) {
-//            System.out.println("You don't have a weapon equipped.");
-//        } else if (equippedWeapon.getRemainingUse() == 0) {
-//            System.out.println("You don't have any ammunition left.");
-//        } else {
-//            equippedWeapon.useWeapon();
-//            System.out.println("You attacked with "
-//                    + equippedWeapon.getShortName()
-//                    + " and did " + equippedWeapon.getDamagePoints()
-//                    + " damage.");
-//        }
-//    }
-
-
     // Method to check Player's remaining Health
     public void health() {
         int playerHealth = newAdventure.getGamePlayer().getHealth();
@@ -188,10 +171,9 @@ public class UserInterface {
         showItemInArray(newAdventure.getCurrentRoom().getItemsInRoomArr());
         if (!newAdventure.getCurrentRoom().getEnemiesInRoomArr().isEmpty()) {
             for (Enemy enemy : newAdventure.getCurrentRoom().getEnemiesInRoomArr()) {
-                System.out.println(enemy.getName());
+                System.out.println(enemy.getName() + ": " + enemy.getWeapon().getShortName());
             }
         }
-
     }
 
     public void menu() {
@@ -260,36 +242,44 @@ public class UserInterface {
                         System.out.println("You attacked with " + equippedWeapon.getShortName() + " and did " +
                                 equippedWeapon.getDamagePoints() + " damage on " + enemyToFight + " and "
                                 + enemyToFight + " now has " + enemyNewHealth + " hp left");
-
-
+                        if (enemyNewHealth <= 0) {
+                            enemyDie();
+                        } else {
+                            int playerNewHealth = (newAdventure.getGamePlayer().getHealth()) -
+                                    (enemy.getWeapon().damagePoints);
+                            newAdventure.getGamePlayer().setHealth(playerNewHealth);
+                            System.out.println(enemy.getName() + " attacked and did " + enemy.getWeapon().damagePoints
+                                    + " damge. Now I have " + playerNewHealth + " HP left!");
+                        }
                     }
-
-
                 }
             }
         }
-
-
     }
 
+        public void enemyDie() {
+            System.out.println("Enemy is dead");
+        }
 
-    // Method to get String Input From User
-    public String getStringInput() {
-        try {
-            String inputString = scanner.nextLine().trim().toLowerCase();
-            if (inputString.isEmpty()) {
+
+        // Method to get String Input From User
+        public String getStringInput () {
+            try {
+                String inputString = scanner.nextLine().trim().toLowerCase();
+                if (inputString.isEmpty()) {
+                    System.out.println("That didn't work. Try again.");
+                    return getStringInput();
+                }
+                return inputString;
+            } catch (InputMismatchException e) {
                 System.out.println("That didn't work. Try again.");
+                scanner.nextLine();
                 return getStringInput();
             }
-            return inputString;
-        } catch (InputMismatchException e) {
-            System.out.println("That didn't work. Try again.");
-            scanner.nextLine();
-            return getStringInput();
         }
     }
 
-}
+
 
 
 

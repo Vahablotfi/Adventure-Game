@@ -18,7 +18,6 @@ public class Adventure {
         return enemy;
     }
 
-
     public Map getGameMap() {
         return gameMap;
     }
@@ -122,6 +121,12 @@ public class Adventure {
         return item;
     }
 
+//    public Weapon enemyDropWeapon() {
+//        Weapon weapon =
+//        //Weapon enemyWeapon = getEnemy().getWeapon();
+//        enemy.removeEnemyWeapon();
+//    }
+
 
     public Item findItemInArray(String itemName, ArrayList<Item> itemsList) {
         for (Item item : itemsList) {
@@ -131,6 +136,7 @@ public class Adventure {
         }
         return null;
     }
+
 //    public Enemy findEnemyInArray(){
 //        for(Enemy enemy : enemy){
 //            if(enemy.getName().equalsIgnoreCase(enemyName));
