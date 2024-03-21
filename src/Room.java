@@ -48,19 +48,10 @@ public class Room {
         return itemsInRoomArr;
     }
 
-
-    public void setItemsInRoomArr(ArrayList itemsInRoomArr) {
-        this.itemsInRoomArr = itemsInRoomArr;
-    }
-
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getDescription() {
         return description;
@@ -75,11 +66,6 @@ public class Room {
         if (!visited) {
             visited = true;
         }
-    }
-
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Room getNorth() {
