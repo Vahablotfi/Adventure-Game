@@ -16,7 +16,7 @@ public class UserInterface {
 
 
     public void playingGame() {
-        System.out.println("Welcome to the game!");
+        System.out.println("Welcome to The Forgotten Sanctuary!");
         look();
         menu();
         String userChoice = " ";
