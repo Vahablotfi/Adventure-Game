@@ -33,10 +33,6 @@ public class Player {
         return inventoryArr;
     }
 
-    public void setInventoryArr(ArrayList<Item> inventoryArr) {
-        this.inventoryArr = inventoryArr;
-    }
-
     public int getHealth() {
         return health;
     }

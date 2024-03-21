@@ -4,7 +4,7 @@ public class Adventure {
     private Map gameMap;
     private Player gamePlayer;
     private Room currentRoom;
-    private Enemy enemy;
+
 
 
     public Adventure() {
@@ -14,25 +14,11 @@ public class Adventure {
         currentRoom.setVisited();
         gamePlayer.setHealth(100);
     }
-    public Enemy getEnemy(){
-        return enemy;
-    }
-
-    public Map getGameMap() {
-        return gameMap;
-    }
 
     public Player getGamePlayer() {
         return gamePlayer;
     }
 
-    public void setGameMap(Map gameMap) {
-        this.gameMap = gameMap;
-    }
-
-    public void setGamePlayer(Player gamePlayer) {
-        this.gamePlayer = gamePlayer;
-    }
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -46,7 +32,6 @@ public class Adventure {
     public ArrayList<Item> inventory() {
         return gamePlayer.getInventoryArr();
     }
-
 
 
     public boolean moveAround(String direction) {
@@ -121,12 +106,6 @@ public class Adventure {
         return item;
     }
 
-//    public Weapon enemyDropWeapon() {
-//        Weapon weapon =
-//        //Weapon enemyWeapon = getEnemy().getWeapon();
-//        enemy.removeEnemyWeapon();
-//    }
-
 
     public Item findItemInArray(String itemName, ArrayList<Item> itemsList) {
         for (Item item : itemsList) {
@@ -136,14 +115,6 @@ public class Adventure {
         }
         return null;
     }
-
-//    public Enemy findEnemyInArray(){
-//        for(Enemy enemy : enemy){
-//            if(enemy.getName().equalsIgnoreCase(enemyName));
-//            return enemy;
-//        }
-//        return null;
-//    }
 
     public Food playerEat(String foodName) {
         Item foodInInventory = findItemInArray(foodName, gamePlayer.getInventoryArr());
