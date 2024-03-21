@@ -222,12 +222,14 @@ public class UserInterface {
 
     public void attack(String wantedEnemy) {
         String enemyToFight = wantedEnemy.substring(6).trim();
-        // should add a length check here
-
+        if (wantedEnemy==null || wantedEnemy.length()<7){
+            System.out.println("Specify which enemy you wish to attack!");
+            return;
+        }
         ArrayList<Enemy> foundEnemies = newAdventure.getCurrentRoom().getEnemiesInRoomArr();
         if (foundEnemies.isEmpty()) {
             System.out.println("There are no enemies to attack");
-        } else {
+        }   else {
             for (Enemy enemy : foundEnemies) {
                 if (enemy.getName().equalsIgnoreCase(enemyToFight)) {
                     Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
@@ -235,7 +237,7 @@ public class UserInterface {
                         System.out.println("You don't have a weapon equipped.");
                     } else if (equippedWeapon.getRemainingUse() == 0) {
                         System.out.println("You don't have any ammunition left.");
-                    } else {
+                    } else  {
                         equippedWeapon.useWeapon();
                         int enemyNewHealth = (enemy.getEnemyHealthPoints()) - equippedWeapon.damagePoints;
                         enemy.setEnemyHealthPoints(enemyNewHealth);
@@ -251,33 +253,35 @@ public class UserInterface {
                             System.out.println(enemy.getName() + " attacked and did " + enemy.getWeapon().damagePoints
                                     + " damge. Now I have " + playerNewHealth + " HP left!");
                         }
+
                     }
+
                 }
             }
         }
     }
 
-        public void enemyDie() {
-            System.out.println("Enemy is dead");
-        }
+    public void enemyDie() {
+        System.out.println("Enemy is dead");
+    }
 
 
-        // Method to get String Input From User
-        public String getStringInput () {
-            try {
-                String inputString = scanner.nextLine().trim().toLowerCase();
-                if (inputString.isEmpty()) {
-                    System.out.println("That didn't work. Try again.");
-                    return getStringInput();
-                }
-                return inputString;
-            } catch (InputMismatchException e) {
+    // Method to get String Input From User
+    public String getStringInput() {
+        try {
+            String inputString = scanner.nextLine().trim().toLowerCase();
+            if (inputString.isEmpty()) {
                 System.out.println("That didn't work. Try again.");
-                scanner.nextLine();
                 return getStringInput();
             }
+            return inputString;
+        } catch (InputMismatchException e) {
+            System.out.println("That didn't work. Try again.");
+            scanner.nextLine();
+            return getStringInput();
         }
     }
+}
 
 
 
