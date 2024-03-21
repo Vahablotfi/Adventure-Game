@@ -10,7 +10,6 @@ public class Map {
     private Room room8;
     private Room room9;
 
-
     public Map() {
         room1 = new Room("Room 1", "This room is warm and bright. There's blood in the corner. Is it mine?. Two doors");
         room2 = new Room("Room 2", "You're in a dark corridor with a very distinct floor pattern. Two doors");
@@ -127,73 +126,6 @@ public class Map {
         return room1;
     }
 
-    public Room getRoom2() {
-        return room2;
-    }
-
-    public Room getRoom3() {
-        return room3;
-    }
-
-    public Room getRoom4() {
-        return room4;
-    }
-
-    public Room getRoom5() {
-        return room5;
-    }
-
-    public Room getRoom6() {
-        return room6;
-    }
-
-    public Room getRoom7() {
-        return room7;
-    }
-
-    public Room getRoom8() {
-        return room8;
-    }
-
-    public Room getRoom9() {
-        return room9;
-    }
-
-    public void setRoom1(Room room1) {
-        this.room1 = room1;
-    }
-
-    public void setRoom2(Room room2) {
-        this.room2 = room2;
-    }
-
-    public void setRoom3(Room room3) {
-        this.room3 = room3;
-    }
-
-    public void setRoom4(Room room4) {
-        this.room4 = room4;
-    }
-
-    public void setRoom5(Room room5) {
-        this.room5 = room5;
-    }
-
-    public void setRoom6(Room room6) {
-        this.room6 = room6;
-    }
-
-    public void setRoom7(Room room7) {
-        this.room7 = room7;
-    }
-
-    public void setRoom8(Room room8) {
-        this.room8 = room8;
-    }
-
-    public void setRoom9(Room room9) {
-        this.room9 = room9;
-    }
 
 }
 
