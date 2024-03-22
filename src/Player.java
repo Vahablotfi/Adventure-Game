@@ -50,6 +50,18 @@ public class Player {
         setHealth(healthPoints);
     }
 
+    public int attack(){
+        return equippedWeapon.damagePoints;
+    }
+
+    public void hit(int damagePoint){
+        int currentHealth = getHealth();
+        setHealth(currentHealth - damagePoint);
+    }
+
+    public boolean die(){
+        return getHealth() <= 0;
+    }
 
 }
 

@@ -1,10 +1,12 @@
+import java.lang.reflect.Type;
+import java.security.PublicKey;
 import java.util.ArrayList;
 
 public class Adventure {
     private Map gameMap;
     private Player gamePlayer;
     private Room currentRoom;
-    private Enemy enemy;
+
 
 
     public Adventure() {
@@ -14,9 +16,7 @@ public class Adventure {
         currentRoom.setVisited();
         gamePlayer.setHealth(100);
     }
-    public Enemy getEnemy(){
-        return enemy;
-    }
+
 
     public Map getGameMap() {
         return gameMap;
@@ -137,16 +137,10 @@ public class Adventure {
         return null;
     }
 
-//    public Enemy findEnemyInArray(){
-//        for(Enemy enemy : enemy){
-//            if(enemy.getName().equalsIgnoreCase(enemyName));
-//            return enemy;
-//        }
-//        return null;
-//    }
+
 
     public Food playerEat(String foodName) {
-        Item foodInInventory = findItemInArray(foodName, gamePlayer.getInventoryArr());
+        Item foodInInventory =  findItemInArray(foodName, gamePlayer.getInventoryArr());
         Item foodInRoom = findItemInArray(foodName, currentRoom.getItemsInRoomArr());
         Food foodToHandel = null;
 
@@ -174,6 +168,81 @@ public class Adventure {
         return weaponToTake;
 
     }
+    public int shot() {
+        Weapon equippedWeapon = getGamePlayer().getEquippedWeapon();
+        int remainingUse = 0;
+        if (equippedWeapon == null){
+            remainingUse = -1;
+        } else if (equippedWeapon.getRemainingUse() > 0)  {
+            equippedWeapon.useWeapon();
+            remainingUse = equippedWeapon.getRemainingUse();
+        }
+        return remainingUse;
+    }
+
+    public int battle(Enemy wantedEnemy) {
+
+        // find enemies in room, and save ina variable
+        Enemy foundedEnemy= findEnemiesInArray(wantedEnemy.getName(), getCurrentRoom().getEnemiesInRoomArr());
+
+        if( shot() == -1){
+            // no equipped weapon -1
+            return -1;
+        }
+        if (shot() == 0){
+            // No ammunition 0
+            return 0;
+        }
+        if (foundedEnemy == null){
+            // no enemy founded -2
+            return -2;
+        }
+        //shot enemy
+        int damageOnEnemy = getGamePlayer().getEquippedWeapon().getDamagePoints();
+        foundedEnemy.hit(damageOnEnemy);
+        // enemy attack
+        int damageOnPlayer = foundedEnemy.attack();
+
+        gamePlayer.hit(damageOnPlayer);
+
+        if( gamePlayer.die()){
+            // died player -3
+            return -3;
+        }
+        if (foundedEnemy.die())
+        // enemy died -4
+        {
+            Weapon enemyWeapon = foundedEnemy.getWeapon();
+            currentRoom.addItem(enemyWeapon);
+            foundedEnemy.setWeapon(null);
+            currentRoom.removeEnemy(foundedEnemy);
+            return -4;
+        }
+
+        return -5;
+    }
+
+
+//    public Enemy killEnemy(Enemy enemyToKill){
+//
+//    }
+
+
+
+    public Enemy findEnemiesInArray(String enemyName, ArrayList<Enemy> enemiesInRoom){
+        Enemy requestedEnemy = null;
+        for (Enemy enemy : enemiesInRoom){
+            if (enemy.getName().equalsIgnoreCase(enemyName)){
+                requestedEnemy = enemy;
+            }
+        }
+        return requestedEnemy;
+    }
+
+
+
+
+
 
 }
 

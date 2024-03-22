@@ -11,7 +11,7 @@ public class MeleeWeapon extends Weapon {
 
     @Override
     int getRemainingUse() {
-        return -1;
+        return 100;
     }
 
     int getDamagePoints() {

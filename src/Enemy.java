@@ -5,7 +5,6 @@ public class Enemy {
     private String description;
     private int enemyHealthPoints;
     private Weapon weapon;
-//    private ArrayList<Enemy> enemyInventoryArr;
 
     public Enemy(String name, String description, int enemyHealthPoint, Weapon weapon){
         this.name = name;
@@ -13,13 +12,7 @@ public class Enemy {
         this.enemyHealthPoints = enemyHealthPoint;
         this.weapon = weapon;
     }
-//    public void removeEnemyWeapon(){
-//        enemyInventoryArr.remove(weapon);
-//
-//    }
-//    public Enemy(){
-//        this.enemyInventoryArr = new ArrayList<>();
-//    }
+
 
     public String getName() {
         return name;
@@ -51,6 +44,20 @@ public class Enemy {
 
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+
+    public int attack(){
+        return weapon.damagePoints;
+    }
+
+    public void hit(int damagePoint){
+        int currentHealth = getEnemyHealthPoints();
+       setEnemyHealthPoints((currentHealth - damagePoint));
+    }
+
+    public boolean die(){
+        return getEnemyHealthPoints() <= 0;
     }
 
 }

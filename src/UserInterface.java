@@ -44,7 +44,7 @@ public class UserInterface {
                 case String s when s.startsWith("equip") -> equip(userChoice);
 
                 //ATTACK
-                case String s when s.startsWith("attack") -> attack(userChoice);
+                case String s when s.startsWith("attack") -> war(userChoice);
 
                 case "health" -> health();
                 case "look" -> look();
@@ -128,7 +128,6 @@ public class UserInterface {
         } else {
             System.out.println("You have to write a food name to eat.");
         }
-
 
     }
 
@@ -219,48 +218,70 @@ public class UserInterface {
         System.out.println("Type 'exit' to exit the game.\n");
     }
 
+    public void war(String wantedEnemy) {
 
-    public void attack(String wantedEnemy) {
-        String enemyToFight = wantedEnemy.substring(6).trim();
-        // should add a length check here
+        ArrayList<Enemy> availableEnemies = newAdventure.getCurrentRoom().getEnemiesInRoomArr();
+        Enemy enemyToKill = null;
+        int warStatus = -6;
 
-        ArrayList<Enemy> foundEnemies = newAdventure.getCurrentRoom().getEnemiesInRoomArr();
-        if (foundEnemies.isEmpty()) {
-            System.out.println("There are no enemies to attack");
-        } else {
-            for (Enemy enemy : foundEnemies) {
-                if (enemy.getName().equalsIgnoreCase(enemyToFight)) {
-                    Weapon equippedWeapon = newAdventure.getGamePlayer().getEquippedWeapon();
-                    if (equippedWeapon == null) {
-                        System.out.println("You don't have a weapon equipped.");
-                    } else if (equippedWeapon.getRemainingUse() == 0) {
-                        System.out.println("You don't have any ammunition left.");
-                    } else {
-                        equippedWeapon.useWeapon();
-                        int enemyNewHealth = (enemy.getEnemyHealthPoints()) - equippedWeapon.damagePoints;
-                        enemy.setEnemyHealthPoints(enemyNewHealth);
-                        System.out.println("You attacked with " + equippedWeapon.getShortName() + " and did " +
-                                equippedWeapon.getDamagePoints() + " damage on " + enemyToFight + " and "
-                                + enemyToFight + " now has " + enemyNewHealth + " hp left");
-                        if (enemyNewHealth <= 0) {
-                            enemyDie();
-                        } else {
-                            int playerNewHealth = (newAdventure.getGamePlayer().getHealth()) -
-                                    (enemy.getWeapon().damagePoints);
-                            newAdventure.getGamePlayer().setHealth(playerNewHealth);
-                            System.out.println(enemy.getName() + " attacked and did " + enemy.getWeapon().damagePoints
-                                    + " damge. Now I have " + playerNewHealth + " HP left!");
-                        }
-                    }
-                }
-            }
+
+        if (wantedEnemy.length() > 6 && !availableEnemies.isEmpty()) {
+            String enemyToFight = wantedEnemy.substring(6).trim();
+            enemyToKill = newAdventure.findEnemiesInArray(enemyToFight, newAdventure.getCurrentRoom().getEnemiesInRoomArr());
+
+
+        } else if (wantedEnemy.length() <= 6  ){
+
+            enemyToKill = availableEnemies.getFirst();
+
         }
+        warStatus = (enemyToKill != null) ? newAdventure.battle(enemyToKill) : newAdventure.shot();
+
+        switch (warStatus) {
+
+            // no equipped weapon
+            case -1:
+                System.out.println("You have no weapon equipped");
+                break;
+            // no enemy founded
+            case -2:
+                System.out.println("No enemy around, don't waist your bullet.");
+                System.out.println("Remaining ammunition"
+                        + newAdventure.getGamePlayer().getEquippedWeapon().getRemainingUse());
+                break;
+            // died player
+            case -3:
+                System.out.println("Game Over");
+                break;
+            // enemy died
+            case -4:
+                System.out.println(enemyToKill.getName() + " is dead you can take his weapon.");
+                break;
+            // No ammunition
+            case 0:
+                System.out.println("No ammunition run away.");
+                break;
+            case -5:
+                System.out.println("You attacked with " + newAdventure.getGamePlayer().getEquippedWeapon().getShortName()
+                        + " and did " +
+                        newAdventure.getGamePlayer().getEquippedWeapon().getDamagePoints() + " damage on "
+                        + enemyToKill.getName() + " and "
+                        + enemyToKill.getName() + " now has " + enemyToKill.getEnemyHealthPoints() + " hp left");
+
+                System.out.println(enemyToKill.getName() + " attacked and did " + enemyToKill.getWeapon().damagePoints
+                        + " damage. Now You have " + newAdventure.getGamePlayer().getHealth() + " HP left!");
+
+                System.out.println("Remaining ammunition"
+                        + newAdventure.getGamePlayer().getEquippedWeapon().getRemainingUse());
+                break;
+
+            default:
+                System.out.println("no one around");
+
+        }
+
+
     }
-
-        public void enemyDie() {
-            System.out.println("Enemy is dead");
-        }
-
 
         // Method to get String Input From User
         public String getStringInput () {
@@ -278,6 +299,7 @@ public class UserInterface {
             }
         }
     }
+
 
 
 
